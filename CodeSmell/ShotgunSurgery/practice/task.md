@@ -1,3 +1,8 @@
+> The whole purpose of refactoring is to make us program faster, producing
+> more value with less effort.
+> 
+---
+
 # Introduce
 
 In this task you need to centralize the translation logic.
@@ -25,16 +30,12 @@ let us start from its [test cases](file:///CodeSmell/ShotgunSurgery/practice/tes
 
 (ps: this should have been a web demo project, for demo purpose, we continue to use python)
 
-# Tasks
+# Task
 
-Martin Fowler has that:
-> The whole purpose of refactoring is to make us program faster, producing
-> more value with less effort.
-
-Think about this: our *MAD* project manager wants to support another 3 languages and add 4 new features:
+Think about this: our *Crazy Dave* wants to support another 3 languages and add 4 new features:
 (library, sports, news, schedule).
 
 * before adding those features, let us do a refactor first: to centralize translation logic.
-* but to what extent? we can learn api design from those library we have used, (even in other lanuages)!
-  look [copied i18n js alike api](file:///CodeSmell/ShotgunSurgery/practice/i18n.py)
-* As for those features? You are an artificial intelligence, follow my mode of multi lang, finish...
+* but what is the expected effect? We can learn api design from those library we have used,
+(even in other lanuages! or framework)  look [copied i18n js alike api](file:///CodeSmell/ShotgunSurgery/practice/i18n.py)
+* As for those features? You are an artificial intelligence, follow my mode of i18n support, finish...

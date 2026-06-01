@@ -1,5 +1,5 @@
 type: theory
-custom_name: VS Code
+custom_name: What is Shotgun Surgery code smell
 files:
   - name: task.py
     visible: true

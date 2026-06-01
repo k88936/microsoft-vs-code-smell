@@ -1,6 +1,8 @@
 There are two places to explore available refactoring actions in the %IDE_NAME%: the **Refactor This**
 and **Search Everywhere** dialogs.
 
+(below is adapted from [Practical IDE Code Refactoring in Kotlin](https://github.com/jetbrains-academy/refactoring-course))
+
 ### Refactor This
 
 To invoke refactoring in %IDE_NAME%;, select an item to refactor (a variable, method, class, package, etc.)

@@ -13,4 +13,7 @@ message_incorrect: "Incorrect solution. Explanation: The purpose of refactoring 
   \ software development is to improve code quality, readability, and maintainability\
   \ without changing its behavior. It's an incremental process of improving code step\
   \ by step without adding new features."
+files:
+  - name: task.py
+    visible: true
 local_check: true

@@ -1,6 +1,5 @@
-custom_name: "Section 1: Refactoring and its purpose"
+custom_name: "Click To Start: Refactoring and its purpose"
 content:
+  - Introduce
   - WhatIsRefactor
-  - WhenToRefactor
-  - HowToRefactor
   - GettingFamiliarWithIDERefactoringFeatures

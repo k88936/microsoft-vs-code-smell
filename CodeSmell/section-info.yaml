@@ -1,4 +1,6 @@
+custom_name: "Adventure: Code Smells"
 content:
+  - Introduce
   - DuplicatedCode
   - LongFunction
   - PrimitiveObsession

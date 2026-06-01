@@ -1,12 +1,11 @@
 type: marketplace
-title: refactour-py
+title: "Microsoft V.S. Code: a tour about refactor"
 language: English
-summary: a refactor tour in python
+summary: a course on code smell and refactor. written in python
 programming_language: Python
 environment: unittest
 content:
   - RefactoringAndItsPurpose
-  - AFirstSetOfRefactorings
   - CodeSmell
 additional_files:
   - name: res/header.png
@@ -24,5 +23,27 @@ additional_files:
   - name: res/search_everywhere_dark.png
     is_binary: true
   - name: res/ts-extract-local.gif
+    is_binary: true
+  - name: res/ZombieNote2_zh.png
+    is_binary: true
+  - name: res/duplicated_code.gif
+    is_binary: true
+  - name: res/what_is_refactor.gif
+    is_binary: true
+  - name: res/ides.gif
+    is_binary: true
+  - name: res/ZombieNote1_zh.png
+    is_binary: true
+  - name: res/ready_plant_your_microsofts.png
+    is_binary: true
+  - name: res/microsoft-vs-code.png
+    is_binary: true
+  - name: res/long_function.gif
+    is_binary: true
+  - name: res/shotgun_surgery.gif
+    is_binary: true
+  - name: res/Garlic.anim_idle.gif
+    is_binary: true
+  - name: res/Zombie_head_grossout.png
     is_binary: true
 yaml_version: 5

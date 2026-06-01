@@ -1,2 +1,5 @@
 type: theory
 custom_name: IntelliJ platform
+files:
+  - name: task.py
+    visible: true

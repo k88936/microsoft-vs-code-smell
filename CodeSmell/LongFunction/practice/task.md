@@ -1,3 +1,7 @@
+> first refactor the program to make it easy to add the feature, then add the feature.
+
+---
+
 # Introduce
 
 In this task, you need to split a long method into small ones.
@@ -16,9 +20,6 @@ You earned 47 credits
 ```
 
 # Task
-
-recall that:
-> first refactor the program to make it easy to add the feature, then add the feature.
 
 Think about we are having a new feature request: ALSO support HTML format output.
 
