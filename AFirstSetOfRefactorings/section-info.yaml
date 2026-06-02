@@ -1,6 +1,0 @@
-custom_name: "Section 2: A first set of refactorings"
-content:
-  - ExtractMethod
-  - ExtractVariable
-  - InlineMethodAndVariables
-  - MoveMethod

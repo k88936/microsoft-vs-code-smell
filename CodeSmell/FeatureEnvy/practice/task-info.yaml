@@ -1,13 +1,13 @@
 type: edu
 custom_name: Find more appropriate classes for methods
 files:
-  - name: src/car.py
+  - name: car.py
     visible: true
     placeholders:
-      - offset: 416
-        length: 172
+      - offset: 443
+        length: 226
         placeholder_text: "# TODO"
-  - name: src/driver.py
+  - name: driver.py
     visible: true
     placeholders:
       - offset: 103
@@ -16,10 +16,12 @@ files:
           # TODO
           def _start(self) -> None:
                   self._car.engine_started = True
+                  self._car.brake = False
                   self._car.gear = 1
           
               def _stop(self) -> None:
                   self._car.gear = 0
+                  self._car.brake = True
                   self._car.engine_started = False
           
               def change_car(self, car: Car) -> None:
@@ -34,7 +36,10 @@ files:
                   self._driving(destination)
                   self._stop()
                   print("Arrived at destination")
-  - name: src/main.py
+  - name: main.py
     visible: true
-  - name: tests/test.py
+  - name: tests/refactor_test.py
     visible: false
+  - name: tests/regression_test.py
+    visible: false
+    propagatable: false

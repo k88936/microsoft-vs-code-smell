@@ -46,4 +46,6 @@ additional_files:
     is_binary: true
   - name: res/Zombie_head_grossout.png
     is_binary: true
+  - name: res/feature_envy.gif
+    is_binary: true
 yaml_version: 5

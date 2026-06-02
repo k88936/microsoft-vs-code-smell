@@ -3,6 +3,7 @@ class Car:
         self._gears_number = gears_number
         self.engine_started = False
         self._gear = 0
+        self.brake = True
 
     @property
     def gear(self) -> int:
@@ -14,10 +15,13 @@ class Car:
             raise RuntimeError("Invalid gear")
         self._gear = value
 
+
     def start(self) -> None:
         self.engine_started = True
+        self.brake = False
         self.gear = 1
 
     def stop(self) -> None:
         self.gear = 0
+        self.brake = True
         self.engine_started = False

@@ -1,6 +1,0 @@
-type: framework
-custom_name: Move refactoring
-content:
-  - WhatIsMoveMethodRefactoring
-  - FindMoreAppropriateFilesForClassesPractice
-  - FindMoreAppropriateClassesForMethodsPractice

@@ -4,8 +4,8 @@ from pathlib import Path
 
 from test_utils import collect_method_from_class_in_module
 
-CAR_SOURCE_PATH = Path(__file__).resolve().parents[1] / "src" / "car.py"
-DRIVER_SOURCE_PATH = Path(__file__).resolve().parents[1] / "src" / "driver.py"
+CAR_SOURCE_PATH = Path(__file__).resolve().parents[1] / "car.py"
+DRIVER_SOURCE_PATH = Path(__file__).resolve().parents[1] / "driver.py"
 
 
 class FindMoreAppropriateClassesForMethodsTest(unittest.TestCase):
