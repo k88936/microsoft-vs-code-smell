@@ -1,7 +1,9 @@
 type: marketplace
-title: "Microsoft V.S. Code: a tour about refactor"
+title: "Microsoft VS Code: a tour about refactor"
 language: English
 summary: a course on code smell and refactor. written in python
+vendor:
+  name: 德宇 王
 programming_language: Python
 environment: unittest
 content:

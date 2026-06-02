@@ -163,5 +163,5 @@ cython_debug/
 .idea/
 
 
-/.coursecreator/refactour_py.zip
-/refactour_py.zip
+*.zip
+.junie
