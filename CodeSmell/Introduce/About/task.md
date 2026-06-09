@@ -16,4 +16,4 @@ In this section, we will take a look at several **code smells**, and give tipped
 (in the form of levels in pvz Adventure mode)
 <img src="../../../res/ZombieNote2_zh.png">
 
-So:**_Ready Plant Your Microsofts!_**
+So:**_Ready Set Microsoft!_**
