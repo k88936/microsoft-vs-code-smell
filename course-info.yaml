@@ -3,7 +3,8 @@ title: "Microsoft VS Code: a tour about refactor"
 language: English
 summary: a course on code smell and refactor. written in python
 vendor:
-  name: 德宇 王
+  name: k88936
+  email: kvtodev@outlook.com
 programming_language: Python
 environment: unittest
 content:
@@ -49,5 +50,7 @@ additional_files:
   - name: res/Zombie_head_grossout.png
     is_binary: true
   - name: res/feature_envy.gif
+    is_binary: true
+  - name: res/loops.gif
     is_binary: true
 yaml_version: 5
