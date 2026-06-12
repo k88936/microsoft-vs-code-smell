@@ -1,0 +1,1 @@
+A Coupler smell represents high degrees of dependency between different parts of the codebase.

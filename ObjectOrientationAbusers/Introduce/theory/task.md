@@ -1,0 +1,1 @@
+An Object-Orientation Abuser smell occurs when code does not take full advantage of object-oriented design.

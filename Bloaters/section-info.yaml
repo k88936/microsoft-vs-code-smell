@@ -1,0 +1,8 @@
+custom_name: Level 1 Bloaters
+content:
+  - Introduce
+  - DataClumps
+  - LargeClass
+  - LongFunction
+  - LongParameterList
+  - PrimitiveObsession

@@ -1,0 +1,1 @@
+Dispensable smells are unnecessary code that causes clutter in your codebase.

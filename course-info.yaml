@@ -9,7 +9,12 @@ programming_language: Python
 environment: unittest
 content:
   - RefactoringAndItsPurpose
-  - CodeSmell
+  - Bloaters
+  - ObjectOrientationAbusers
+  - ChangePreventers
+  - Dispensables
+  - Couplers
+  - Minigames
 additional_files:
   - name: .gitignore
   - name: pyproject.toml
@@ -27,28 +32,31 @@ additional_files:
     is_binary: true
   - name: res/ZombieNote2_zh.png
     is_binary: true
-  - name: res/duplicated_code.gif
-    is_binary: true
-  - name: res/what_is_refactor.gif
-    is_binary: true
-  - name: res/ides.gif
-    is_binary: true
   - name: res/ZombieNote1_zh.png
     is_binary: true
   - name: res/ready_plant_your_microsofts.png
     is_binary: true
   - name: res/microsoft-vs-code.png
     is_binary: true
-  - name: res/long_function.gif
-    is_binary: true
-  - name: res/shotgun_surgery.gif
-    is_binary: true
-  - name: res/Garlic.anim_idle.gif
-    is_binary: true
   - name: res/Zombie_head_grossout.png
     is_binary: true
-  - name: res/feature_envy.gif
+  - name: res/long_param_list.png
     is_binary: true
-  - name: res/loops.gif
+  - name: res/primitive_obsession.webp
+    is_binary: true
+  - name: res/duplicated_code.webp
+    is_binary: true
+  - name: res/feature_envy.webp
+    is_binary: true
+  - name: res/what_is_refactor.webp
+    is_binary: true
+  - name: res/ides.webp
+    is_binary: true
+  - name: res/Garlic.anim_idle.webp
+    is_binary: true
+  - name: res/long_function.webp
+    is_binary: true
+  - name: res/loops.webp
+  - name: res/shotgun_surgery.webp
     is_binary: true
 yaml_version: 5

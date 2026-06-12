@@ -1,5 +1,5 @@
 <p align="center">
-<img src="../../../res/what_is_refactor.gif">
+<img src="../../../res/what_is_refactor.webp">
 </p>
 
 **_Refactoring_** is a process of modifying source code without changing its behavior. For example, renaming a method or

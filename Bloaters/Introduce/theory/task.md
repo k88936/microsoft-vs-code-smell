@@ -1,0 +1,1 @@
+A Bloater smell represents a code element that has grown so large that it cannot be effectively handled.

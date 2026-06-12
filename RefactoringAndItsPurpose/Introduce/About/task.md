@@ -14,6 +14,7 @@ This course referenced many resources:
 * [Practical IDE Code Refactoring in Kotlin](https://github.com/jetbrains-academy/refactoring-course) by JetBrains
 * [Refactoring](https://martinfowler.com/books/refactoring.html) by Martin Fowler, with Kent Beck
 * [PvZ-Portable](https://github.com/wszqkzqk/PvZ-Portable) for animation make
+* [Subjective evaluation of software evolvability using code smells: An empirical study](https://link.springer.com/article/10.1007/s10664-006-9002-8) by Mika V. Mäntylä & Casper Lassenius
 
 Finally, to make the tour more interesting and easier to understand, I integrated some gaming and Microsoft elements, like:
 <p align="center">

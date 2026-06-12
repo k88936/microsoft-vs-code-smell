@@ -1,0 +1,10 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+  - name: tests/regression_test.py
+    visible: false
+    propagatable: false
+  - name: tests/refactor_test.py
+    visible: false
+    propagatable: false
