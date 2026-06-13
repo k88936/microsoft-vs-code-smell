@@ -1,33 +1,24 @@
 from dataclasses import dataclass
-
+from math import sqrt
 
 @dataclass
-class Achievement:
-    home_lawn_security: bool
-    roll_some_heads: bool
-    sunny_days: bool
+class Coordinates:
+    x_coordinate: float
+    y_coordinate: float
+    z_coordinate: float
 
-def print_achievement(user_name: str, achievement: Achievement, achievement_score:int) -> None:
-    print(f"{user_name}"
-          f"home_lawn_security: {achievement.home_lawn_security}, "
-          f"roll_some_heads: {achievement.roll_some_heads}, "
-          f"sunny_days: {achievement.sunny_days}, "
-          f"score {achievement_score}")
 
-def print_achievement(user_name: str, achievement: Achievement) -> None:
-    score = evaluate_achievement(achievement)
-    print(f"{user_name}"
-          f"home_lawn_security: {achievement.home_lawn_security}, "
-          f"roll_some_heads: {achievement.roll_some_heads}, "
-          f"sunny_days: {achievement.sunny_days}, "
-          f"score {score}")
+def l2_norm(coord: Coordinates) -> float:
+    return sqrt(coord.x_coordinate ** 2 + coord.y_coordinate ** 2 + coord.z_coordinate ** 2)
 
-def evaluate_achievement(achievement: Achievement) -> int:
-    score = 0
-    if achievement.home_lawn_security:
-        score += 1
-    if achievement.roll_some_heads:
-        score += 2
-    if achievement.sunny_days:
-        score += 4
-    return score
+def l1_norm(coord: Coordinates) -> float:
+    return abs(coord.x_coordinate) + abs(coord.y_coordinate) + abs(coord.z_coordinate)
+
+
+if __name__ == "__main__":
+    x_coordinate = 4
+    y_coordinate = -7
+    z_coordinate = 43
+    coordinates = Coordinates(x_coordinate,y_coordinate,z_coordinate)
+    print(l1_norm(coordinates))
+    print(l2_norm(coordinates))
