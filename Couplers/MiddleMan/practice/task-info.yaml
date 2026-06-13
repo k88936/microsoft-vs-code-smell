@@ -8,6 +8,7 @@ files:
       - offset: 0
         length: 223
         placeholder_text: |-
+          # TODO
           # Middle Man class
           class MiddleMan:
               def do_something(self) -> str:

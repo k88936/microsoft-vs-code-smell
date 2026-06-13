@@ -9,6 +9,7 @@ files:
       - offset: 41
         length: 517
         placeholder_text: |-
+          # TODO
           def word_count(file_name: str) -> int:
               file_path = Path(file_name)
               if not file_path.exists() or not file_path.is_file():

@@ -38,6 +38,7 @@ files:
       - offset: 900
         length: 231
         placeholder_text: |2
+              # TODO
               score = evaluate_achievement(home_lawn_security, roll_some_heads, sunny_days)
               print_achievement(user_name, home_lawn_security, roll_some_heads, sunny_days, score)
   - name: tests/regression_test.py

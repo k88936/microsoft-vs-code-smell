@@ -6,7 +6,8 @@ files:
     placeholders:
       - offset: 443
         length: 226
-        placeholder_text: "# TODO"
+        placeholder_text: |2
+              # TODO
   - name: driver.py
     visible: true
     placeholders:
