@@ -3,7 +3,14 @@ This is the repository for **Microsoft VS Code: a tour about refactor** course o
 <img src="res/microsoft-vs-code.png" width="400"/>
 </p>
 
-To make the tour more interesting and easier to understand, I integrated some gaming and Microsoft elements.
+
+## Features:
+
+* Most code in this course is annotated with Typing.
+
+* No AIGC in theory text or practice code.
+
+* To make the tour more interesting and easier to understand, I integrated some gaming and Microsoft elements, like:
 
 ## Quick Start
 1. install JetBrains Academy plugin in Pycharm
@@ -17,10 +24,6 @@ To make the tour more interesting and easier to understand, I integrated some ga
 3. **My Courses** -> **Open course from disk** and select the .tar downloaded from github release
 
 4. the plugin provides a built-in guide to help you go through.
-
-<p align="center">
-<img src="res/ZombieNote1_zh.png" width="400" />
-</p>
 
 ## Reference
 * [Practical IDE Code Refactoring in Kotlin](https://github.com/jetbrains-academy/refactoring-course) by JetBrains
