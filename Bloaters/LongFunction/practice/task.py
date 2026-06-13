@@ -73,6 +73,8 @@ def compute_statement_data(invoice, plays) -> StatementData:
         volume_credits=volume_credits,
     )
 
+
+
 def render_plain_text(statement_data: StatementData) -> str:
     result = f"Statement for {statement_data.customer}\n"
     for perf in statement_data.performances:

@@ -122,3 +122,40 @@ def has_return_attr_call_in_func_def(
     return False
 
 
+def get_class_fields(cls_node: ast.ClassDef) -> list[tuple[str, str | None]]:
+    fields = []
+    for node in cls_node.body:
+        if isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name):
+            ann = node.annotation
+            ann_name = ann.id if isinstance(ann, ast.Name) else None
+            fields.append((node.target.id, ann_name))
+    return fields
+
+
+def get_attribute_accesses(func: ast.FunctionDef) -> list[tuple[str, str]]:
+    accesses = []
+    for node in ast.walk(func):
+        if isinstance(node, ast.Attribute) and isinstance(node.value, ast.Name):
+            accesses.append((node.value.id, node.attr))
+    return accesses
+
+
+def call_and_capture_stdout(func, *args, **kwargs) -> str:
+    """Call a function and return its stdout output as a string.
+
+    Temporarily redirects sys.stdout to a StringIO buffer, calls
+    ``func(*args, **kwargs)``, restores sys.stdout, and returns the
+    captured text.
+    """
+    import io
+    import sys
+
+    captured = io.StringIO()
+    old_stdout = sys.stdout
+    sys.stdout = captured
+    try:
+        func(*args, **kwargs)
+    finally:
+        sys.stdout = old_stdout
+    return captured.getvalue()
+

@@ -59,4 +59,6 @@ additional_files:
   - name: res/loops.webp
   - name: res/shotgun_surgery.webp
     is_binary: true
+  - name: res/some_achievement.jpeg
+    is_binary: true
 yaml_version: 5

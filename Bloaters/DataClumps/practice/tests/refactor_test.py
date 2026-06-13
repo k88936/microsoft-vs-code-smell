@@ -5,8 +5,6 @@ from pathlib import Path
 from test_utils import (
     collect_class_def_from_module,
     collect_func_def_from_module,
-    get_attribute_accesses,
-    get_class_fields,
 )
 
 SOURCE_PATH = Path(__file__).resolve().parents[1] / "task.py"

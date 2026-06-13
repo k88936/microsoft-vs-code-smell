@@ -6,26 +6,26 @@ files:
     placeholders:
       - offset: 433
         length: 181
-        placeholder_text: |-
-          # TODO
-          return (
-            f"{profile.name}, 你的宿舍评分为: {info["score"]}\n 你的宿舍是{info["stars"]}星好宿舍" if lang == "zh"
-            else f"{profile.name}, your dorm score is: {info["score"]}\n your dorm is {info["stars"]} stars")
+        placeholder_text: |2
+              # TODO
+              return (
+                f"{profile.name}, 你的宿舍评分为: {info["score"]}\n 你的宿舍是{info["stars"]}星好宿舍" if lang == "zh"
+                else f"{profile.name}, your dorm score is: {info["score"]}\n your dorm is {info["stars"]} stars")
       - offset: 690
         length: 272
-        placeholder_text: |-
-          # TODO
-          swim_pass_str_zh = '已通过' if info['swim_passed'] else '未通过'
-          swim_pass_str_en = 'passed' if info['swim_passed'] else 'not passed'
-          return (
-          f"{profile.name}, 你的游泳测试{swim_pass_str_zh}\n 你的体育预约评分为: {info['reservation_score']}" if lang == "zh"
-          else f"{profile.name}, your swimming test is {swim_pass_str_en}\n your sports reservation score is: {info['reservation_score']}"
-          )
+        placeholder_text: |2
+              # TODO
+              swim_pass_str_zh = '已通过' if info['swim_passed'] else '未通过'
+              swim_pass_str_en = 'passed' if info['swim_passed'] else 'not passed'
+              return (
+              f"{profile.name}, 你的游泳测试{swim_pass_str_zh}\n 你的体育预约评分为: {info['reservation_score']}" if lang == "zh"
+              else f"{profile.name}, your swimming test is {swim_pass_str_en}\n your sports reservation score is: {info['reservation_score']}"
+              )
       - offset: 1508
         length: 76
-        placeholder_text: |-
-          # TODO
-          set_lang(args.lang)
+        placeholder_text: |2
+              # TODO
+              set_lang(args.lang)
   - name: tests/regression_test.py
     visible: true
     propagatable: false
@@ -33,8 +33,9 @@ files:
     visible: true
     placeholders:
       - offset: 300
-        length: 392
-        placeholder_text: "# TODO"
+        length: 391
+        placeholder_text: |2
+              # TODO
   - name: tests/refactor_test.py
     visible: false
     propagatable: false

@@ -1,0 +1,17 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 1
+        length: 148
+        placeholder_text: "# TODO impl your small class"
+      - offset: 163
+        length: 55
+        placeholder_text: |2
+              # TODO replace with your small class
+              dollars = 28.27
+              cents = int(dollars * 100 % 100)
+  - name: tests/regression_test.py
+    visible: false
+    propagatable: false

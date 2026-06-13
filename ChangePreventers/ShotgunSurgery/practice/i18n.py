@@ -14,6 +14,7 @@ class I18nKey(Enum):
     SWIM_RESULT = _I18nEntry(zh="{name}, 你的游泳测试{result}", en="{name}, your swimming test is {result}")
     SPORTS_SCORE = _I18nEntry(zh="你的体育预约评分为: {score}", en="your sports reservation score is: {score}")
 
+
 class I18nLanguage(Enum):
     ZH = "zh-CN"
     EN = "en-US"

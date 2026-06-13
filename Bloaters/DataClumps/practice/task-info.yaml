@@ -7,20 +7,21 @@ files:
       - offset: 87
         length: 72
         placeholder_text: "# TODO"
-      - offset: 160
-        length: 266
+      - offset: 162
+        length: 265
         placeholder_text: |-
           # TODO
           def l2_norm(x_coordinate: float, y_coordinate: float, z_coordinate: float) -> float:
               return sqrt(x_coordinate ** 2 + y_coordinate ** 2 + z_coordinate ** 2)
+          
           def l1_norm(x_coordinate: float, y_coordinate: float, z_coordinate: float) -> float:
               return abs(x_coordinate) + abs(y_coordinate) + abs(z_coordinate)
-      - offset: 520
-        length: 134
-        placeholder_text: |-
-          # TODO
-          print(l1_norm(x_coordinate,y_coordinate,z_coordinate))
-          print(l2_norm(x_coordinate,y_coordinate,z_coordinate))
+      - offset: 521
+        length: 133
+        placeholder_text: |2-
+              # TODO
+              print(l1_norm(x_coordinate,y_coordinate,z_coordinate))
+              print(l2_norm(x_coordinate,y_coordinate,z_coordinate))
   - name: tests/regression_test.py
     visible: false
     propagatable: false

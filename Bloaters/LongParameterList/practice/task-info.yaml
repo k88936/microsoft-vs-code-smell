@@ -1,7 +1,45 @@
 type: edu
+custom_name: shorten parameter lists
 files:
   - name: task.py
     visible: true
+    placeholders:
+      - offset: 65
+        length: 78
+        placeholder_text: |2
+              # TODO
+      - offset: 145
+        length: 360
+        placeholder_text: |-
+          # TODO
+          def print_achievement(user_name: str,
+                                home_lawn_security: bool,
+                                roll_some_heads: bool,
+                                sunny_days: bool,
+                                achievement_score: float) -> None:
+              print(f"{user_name}\n"
+                    f"home_lawn_security: {home_lawn_security}, \n"
+                    f"roll_some_heads: {roll_some_heads}, \n"
+                    f"sunny_days: {sunny_days}, \n"
+                    f"score: {achievement_score}\n")
+      - offset: 508
+        length: 253
+        placeholder_text: |-
+          # TODO
+          def evaluate_achievement(home_lawn_security: bool, roll_some_heads: bool, sunny_days: bool) -> int:
+              score = 0
+              if home_lawn_security:
+                  score += 1
+              if roll_some_heads:
+                  score += 2
+              if sunny_days:
+                  score += 4
+              return score
+      - offset: 900
+        length: 231
+        placeholder_text: |2
+              score = evaluate_achievement(home_lawn_security, roll_some_heads, sunny_days)
+              print_achievement(user_name, home_lawn_security, roll_some_heads, sunny_days, score)
   - name: tests/regression_test.py
     visible: false
     propagatable: false

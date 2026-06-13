@@ -8,6 +8,7 @@ class Coordinates:
     z_coordinate: float
 
 
+
 def l2_norm(coord: Coordinates) -> float:
     return sqrt(coord.x_coordinate ** 2 + coord.y_coordinate ** 2 + coord.z_coordinate ** 2)
 
