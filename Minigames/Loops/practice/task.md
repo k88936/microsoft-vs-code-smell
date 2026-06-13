@@ -1,8 +1,9 @@
-### Introduce
+# Introduce
 
-there are different builtin pipeline api provided by different languages.
+Here are concise examples transforming a list of integers `[1, 2, 3, 4]` by doubling each element (map) and summing them (reduce)
+in different languages.
 
-Here are concise examples transforming a list of integers `[1, 2, 3, 4]` by doubling each element (map) and summing them (reduce).
+we can just get a glance of their api design.
 
 ### Java(Stream API)
 ```java
@@ -41,7 +42,7 @@ let sum: i32 = nums.iter().map(|&x| x * 2).sum();
 
 ---
 
-However, python does not provide a chainable, pipeline-like builtin api like those above; Its api is more function-like:
+However, python does not provide a oop-like builtin api; Its api is more function-like:
 ```python
 from functools import reduce
 
@@ -49,3 +50,20 @@ nums = [1, 2, 3, 4]
 sum_val = reduce(lambda acc, x: acc + x, map(lambda x: x * 2, nums), 0)
 # Idiomatic Python prefers: sum(x * 2 for x in nums)
 ```
+
+We will implement Stream class supporting these operations
+and use it to rewrite the sunshine-to-damage calculation.
+
+# Task
+
+* impl the `filter` for Stream. You should use the built-in filter function. You can refer to the implementation of `map`.
+* rewrite the sunshine-to-damage calculation using Stream.
+    ```python
+    # example: compute the sum of (multiply 10 foreach( even numbers from 1 to 5))
+    stream = (Stream([1, 2, 3, 4, 5])
+              .filter(lambda x: x % 2 == 0)
+              .map(lambda x: x * 10))
+
+    # Consumes lazily
+    print(stream.reduce(lambda acc,x: acc +x, 0))  # Output: 60 (20 + 40)
+    ```

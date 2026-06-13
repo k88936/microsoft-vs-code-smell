@@ -1,10 +1,33 @@
 type: edu
+custom_name: "replace loops with map, filter and reduce"
 files:
   - name: task.py
     visible: true
+    placeholders:
+      - offset: 1532
+        length: 46
+        placeholder_text: |2
+                  # TODO impl the filter operation with built-in filter
+      - offset: 1862
+        length: 287
+        placeholder_text: |2
+              # TODO rewrite using Stream
+              total = 0
+              for sunshine_v in sunshine_history:
+                  sunshine = SunShine(sunshine_v)
+                  peanut = sunshine_to_peanut(sunshine)
+                  if not peanut:
+                      continue
+                  fireball = peanut_to_fireball(peanut)
+                  damage = fireball_to_damage(fireball)
+                  total += damage.value
+              return total
   - name: tests/regression_test.py
     visible: false
     propagatable: false
   - name: __init__.py
+    visible: false
+    propagatable: false
+  - name: tests/refactor_test.py
     visible: false
     propagatable: false

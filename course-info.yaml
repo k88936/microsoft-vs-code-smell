@@ -63,4 +63,6 @@ additional_files:
     is_binary: true
   - name: res/middle_man.webp
     is_binary: true
+  - name: res/pipeline.webp
+    is_binary: true
 yaml_version: 5

@@ -24,3 +24,4 @@ in code and to deal with them.
 * [Refactoring](https://martinfowler.com/books/refactoring.html) by Martin Fowler, with Kent Beck
 * [PvZ-Portable](https://github.com/wszqkzqk/PvZ-Portable) for animation make
 * [Subjective evaluation of software evolvability using code smells: An empirical study](https://link.springer.com/article/10.1007/s10664-006-9002-8) by Mika V. Mäntylä & Casper Lassenius
+* [Map, Filter & Reduce, Explained Visually](https://rye-welz-geselowitz.github.io/Map-Reduce-Filter/)
