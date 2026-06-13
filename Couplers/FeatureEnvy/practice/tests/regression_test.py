@@ -1,6 +1,6 @@
 import unittest
 
-from CodeSmell.FeatureEnvy.practice.car import Car
+from FeatureEnvy.practice.car import Car
 
 
 class RegressionTest(unittest.TestCase):

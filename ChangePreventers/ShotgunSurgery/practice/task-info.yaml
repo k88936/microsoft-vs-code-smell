@@ -4,14 +4,14 @@ files:
   - name: thu_info_cli.py
     visible: true
     placeholders:
-      - offset: 433
+      - offset: 423
         length: 181
         placeholder_text: |2
               # TODO
               return (
                 f"{profile.name}, 你的宿舍评分为: {info["score"]}\n 你的宿舍是{info["stars"]}星好宿舍" if lang == "zh"
                 else f"{profile.name}, your dorm score is: {info["score"]}\n your dorm is {info["stars"]} stars")
-      - offset: 690
+      - offset: 680
         length: 272
         placeholder_text: |2
               # TODO
@@ -21,7 +21,7 @@ files:
               f"{profile.name}, 你的游泳测试{swim_pass_str_zh}\n 你的体育预约评分为: {info['reservation_score']}" if lang == "zh"
               else f"{profile.name}, your swimming test is {swim_pass_str_en}\n your sports reservation score is: {info['reservation_score']}"
               )
-      - offset: 1508
+      - offset: 1498
         length: 76
         placeholder_text: |2
               # TODO

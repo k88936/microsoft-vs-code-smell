@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 from dataclasses import dataclass
 
-from CodeSmell.ShotgunSurgery.practice.i18n import I18nKey, I18nLanguage, set_language, t
+from ShotgunSurgery.practice.i18n import I18nKey, I18nLanguage, set_language, t
 
 
 @dataclass(frozen=True)

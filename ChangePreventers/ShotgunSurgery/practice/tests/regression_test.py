@@ -1,7 +1,7 @@
 import unittest
 
-from CodeSmell.ShotgunSurgery.practice.thu_info_cli import Profile, get_dorm_info, get_sports_info
-from CodeSmell.ShotgunSurgery.practice.i18n import set_language, I18nLanguage
+from ShotgunSurgery.practice.thu_info_cli import Profile, get_dorm_info, get_sports_info
+from ShotgunSurgery.practice.i18n import set_language, I18nLanguage
 
 
 def print_all():
@@ -14,7 +14,7 @@ class TestCase(unittest.TestCase):
     def test_en(self):
 
         try:
-            from CodeSmell.ShotgunSurgery.practice.thu_info_cli import set_lang
+            from ShotgunSurgery.practice.thu_info_cli import set_lang
             set_lang("en")
         except:
             pass
@@ -29,7 +29,7 @@ class TestCase(unittest.TestCase):
     def test_zh(self):
 
         try:
-            from CodeSmell.ShotgunSurgery.practice.thu_info_cli import set_lang
+            from ShotgunSurgery.practice.thu_info_cli import set_lang
             set_lang("zn")
         except:
             pass
