@@ -1,4 +1,5 @@
 type: edu
+custom_name: remove middle man
 files:
   - name: tests/test.py
     visible: false

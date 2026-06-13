@@ -61,4 +61,6 @@ additional_files:
     is_binary: true
   - name: res/some_achievement.jpeg
     is_binary: true
+  - name: res/middle_man.webp
+    is_binary: true
 yaml_version: 5
