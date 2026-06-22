@@ -65,4 +65,8 @@ additional_files:
     is_binary: true
   - name: res/pipeline.webp
     is_binary: true
+  - name: res/rect_and_image.webp
+    is_binary: true
+  - name: res/refused_bequest.webp
+    is_binary: true
 yaml_version: 5

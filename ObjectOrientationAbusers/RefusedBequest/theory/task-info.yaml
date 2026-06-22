@@ -1,0 +1,5 @@
+type: theory
+custom_name: What is a Refused Bequest code smell?
+files:
+  - name: task.py
+    visible: true

@@ -1,0 +1,61 @@
+type: edu
+custom_name: extract bequest into abstract class
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 537
+        length: 51
+        placeholder_text: "    # TODO"
+      - offset: 631
+        length: 52
+        placeholder_text: "    # TODO"
+      - offset: 727
+        length: 79
+        placeholder_text: "    # TODO"
+      - offset: 950
+        length: 0
+        placeholder_text: |2-
+              # TODO
+              @abstractmethod
+              def resize(self, new_size: Vec2):
+                  pass
+        
+              # TODO
+              @abstractmethod
+              def chop(self, view_left_top: Vec2, view_right_bottom: Vec2):
+                  pass
+      - offset: 953
+        length: 36
+        placeholder_text: |2-
+          # TODO
+          class Rectangle(Element):
+      - offset: 1389
+        length: 0
+        placeholder_text: |2-
+              @override
+              def chop(self, view_left_top: Vec2, view_right_bottom: Vec2):
+                  # not supported operation
+                  pass
+      - offset: 1392
+        length: 43
+        placeholder_text: |2-
+          # TODO
+          class Image(Element):
+      - offset: 1623
+        length: 0
+        placeholder_text: |2-
+              # TODO
+              @override
+              def resize(self, new_size: Vec2):
+                  # not support free scaling
+                  pass
+      - offset: 1625
+        length: 13
+        placeholder_text: "    # TODO"
+      - offset: 1710
+        length: 13
+        placeholder_text: "    # TODO"
+  - name: tests/refactor_test.py
+    visible: false
+    propagatable: false
