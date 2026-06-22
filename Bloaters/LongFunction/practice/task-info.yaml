@@ -19,7 +19,7 @@ files:
               pass
       - offset: 2761
         length: 69
-        placeholder_text: |2
+        placeholder_text: |2-
               total_amount = 0
               volume_credits = 0
               result = f"Statement for {invoice['customer']}\n"
