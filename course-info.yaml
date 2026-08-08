@@ -69,4 +69,5 @@ additional_files:
     is_binary: true
   - name: res/refused_bequest.webp
     is_binary: true
-yaml_version: 5
+  - name: Minigames/ErrorHandling/scratch.txt
+yaml_version: 6

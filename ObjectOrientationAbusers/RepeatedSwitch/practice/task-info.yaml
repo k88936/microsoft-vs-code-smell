@@ -1,0 +1,10 @@
+type: edu
+custom_name: replace switch with polymorphism
+files:
+  - name: task.py
+    visible: true
+  - name: tests/refactor_test.py
+    visible: false
+    propagatable: false
+  - name: answer.py
+    visible: true

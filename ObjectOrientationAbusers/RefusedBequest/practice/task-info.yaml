@@ -27,7 +27,7 @@ files:
                   pass
       - offset: 953
         length: 36
-        placeholder_text: |2-
+        placeholder_text: |-
           # TODO
           class Rectangle(Element):
       - offset: 1389
@@ -39,7 +39,7 @@ files:
                   pass
       - offset: 1392
         length: 43
-        placeholder_text: |2-
+        placeholder_text: |-
           # TODO
           class Image(Element):
       - offset: 1623

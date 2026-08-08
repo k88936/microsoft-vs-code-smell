@@ -1,15 +1,15 @@
 type: edu
-custom_name: try write a small class
+custom_name: take care of string-typed
 files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 13
-        length: 135
+      - offset: 0
+        length: 0
         placeholder_text: |2
               # TODO impl your small class
-      - offset: 162
-        length: 54
+      - offset: 0
+        length: 0
         placeholder_text: |2
               # TODO replace with your small class
               dollars = 28.27
@@ -17,3 +17,5 @@ files:
   - name: tests/regression_test.py
     visible: false
     propagatable: false
+  - name: answer.py
+    visible: true

@@ -1,5 +1,4 @@
 type: theory
-custom_name: What is Speculative Generality code smell
 files:
   - name: task.py
     visible: true

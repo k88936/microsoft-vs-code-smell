@@ -1,5 +1,5 @@
 type: theory
-custom_name: What is Speculative Generality code smell
+custom_name: What is Large Class code smell
 files:
   - name: task.py
     visible: true
