@@ -3,3 +3,40 @@ custom_name: decouple with observer design pattern
 files:
   - name: task.py
     visible: true
+    placeholders:
+      - offset: 451
+        length: 26
+        placeholder_text: ""
+      - offset: 577
+        length: 160
+        placeholder_text: |2-
+              def unlock(self, name: str) -> None:
+                  self._unlocked.add(name)
+      - offset: 941
+        length: 6
+        placeholder_text: "(self, achievement: AchievementSystem)"
+      - offset: 1017
+        length: 48
+        placeholder_text: self._achievement = achievement
+      - offset: 1382
+        length: 194
+        placeholder_text: |2-
+                      if (was_alive
+                              and event.target.health == 0
+                              and event.source.plant_type is PlantType.POTATO_MINE
+                      ):
+                          self._achievement.unlock(AchievementSystem.SPUDOW)
+      - offset: 1737
+        length: 15
+        placeholder_text: PhysicsSystem(achievement)
+      - offset: 1753
+        length: 53
+        placeholder_text: ""
+  - name: observer.py
+    visible: true
+  - name: tests/regression_test.py
+    visible: false
+    propagatable: false
+  - name: tests/refactor_test.py
+    visible: false
+    propagatable: false
