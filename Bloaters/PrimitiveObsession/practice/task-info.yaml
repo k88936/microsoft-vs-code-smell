@@ -4,18 +4,29 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 0
-        length: 0
-        placeholder_text: |2
-              # TODO impl your small class
-      - offset: 0
-        length: 0
-        placeholder_text: |2
-              # TODO replace with your small class
-              dollars = 28.27
-              cents = int(dollars * 100 % 100)
+      - offset: 287
+        length: 22
+        placeholder_text: "model: str"
+      - offset: 330
+        length: 20
+        placeholder_text: "size: str"
+      - offset: 463
+        length: 38
+        placeholder_text: "ExternalGenerationCallParam(req.model, req.prompt, req.size)"
+      - offset: 727
+        length: 601
+        placeholder_text: |
+          # TODO convert a typed request to the provider call parameters
+      - offset: 2127
+        length: 55
+        placeholder_text: |2-
+              # TODO
+              # THIS WILL CRASH ON nano-banana-2 result!
+              width = int(req.size.split("x")[0])
+              height = int(req.size.split("x")[1])
   - name: tests/regression_test.py
     visible: false
     propagatable: false
-  - name: answer.py
-    visible: true
+  - name: tests/refactor_test.py
+    visible: false
+    propagatable: false
