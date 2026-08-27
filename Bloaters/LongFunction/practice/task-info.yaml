@@ -19,22 +19,37 @@ files:
               pass
       - offset: 2761
         length: 69
-        placeholder_text: "    total_amount = 0\n    volume_credits = 0\n    result =\
-      \ f\"Statement for {invoice['customer']}\\n\"\n    \n    for perf in invoice[\"\
-      performances\"]:\n        play = plays[perf[\"playID\"]]\n        this_amount\
-      \ = 0\n    \n        if play[\"type\"] == \"tragedy\":\n            this_amount\
-      \ = 40000\n            if perf[\"audience\"] > 30:\n                this_amount\
-      \ += 1000 * (perf[\"audience\"] - 30)\n        elif play[\"type\"] == \"comedy\"\
-      :\n            this_amount = 30000\n            if perf[\"audience\"] > 20:\n\
-      \                this_amount += 10000 + 500 * (perf[\"audience\"] - 20)\n  \
-      \          this_amount += 300 * perf[\"audience\"]\n        else:\n        \
-      \    raise ValueError(f\"unknown type: {play['type']}\")\n    \n        volume_credits\
-      \ += max(perf[\"audience\"] - 30, 0)\n        if \"comedy\" == play[\"type\"\
-      ]:\n            volume_credits += perf[\"audience\"] // 5\n    \n        result\
-      \ += f\"  {play['name']}: ${this_amount / 100:.2f} ({perf['audience']} seats)\\\
-      n\"\n        total_amount += this_amount\n    \n    result += f\"Amount owed\
-      \ is ${total_amount / 100:.2f}\\n\"\n    result += f\"You earned {volume_credits}\
-      \ credits\\n\"\n    return result"
+        placeholder_text: |2-
+              total_amount = 0
+              volume_credits = 0
+              result = f"Statement for {invoice['customer']}\n"
+              
+              for perf in invoice["performances"]:
+                  play = plays[perf["playID"]]
+                  this_amount = 0
+              
+                  if play["type"] == "tragedy":
+                      this_amount = 40000
+                      if perf["audience"] > 30:
+                          this_amount += 1000 * (perf["audience"] - 30)
+                  elif play["type"] == "comedy":
+                      this_amount = 30000
+                      if perf["audience"] > 20:
+                          this_amount += 10000 + 500 * (perf["audience"] - 20)
+                      this_amount += 300 * perf["audience"]
+                  else:
+                      raise ValueError(f"unknown type: {play['type']}")
+              
+                  volume_credits += max(perf["audience"] - 30, 0)
+                  if "comedy" == play["type"]:
+                      volume_credits += perf["audience"] // 5
+              
+                  result += f"  {play['name']}: ${this_amount / 100:.2f} ({perf['audience']} seats)\n"
+                  total_amount += this_amount
+              
+              result += f"Amount owed is ${total_amount / 100:.2f}\n"
+              result += f"You earned {volume_credits} credits\n"
+              return result
     propagatable: false
   - name: tests/refactor_test.py
     visible: false
