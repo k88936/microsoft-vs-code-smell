@@ -4,6 +4,7 @@ import uuid
 from abc import abstractmethod, ABC
 from typing import List
 
+# TODO a bad example
 
 class Tool(ABC):
     @abstractmethod
