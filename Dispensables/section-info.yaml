@@ -1,7 +1,7 @@
 custom_name: Level 4 Dispensables
 content:
   - Introduce
-  - DataClass
+#  - DataClass
   - DuplicatedCode
-  - LazyElement
-  - SpeculativeGenerality
+#  - LazyElement
+#  - SpeculativeGenerality
