@@ -2,5 +2,4 @@ custom_name: "Click To Start: Refactoring and its purpose"
 content:
   - Introduce
   - WhatIsRefactor
-  - GettingFamiliarWithIDERefactoringFeatures
   - WhatIsCodeSmell
