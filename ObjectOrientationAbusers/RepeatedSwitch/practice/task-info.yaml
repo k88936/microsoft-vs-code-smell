@@ -1,10 +1,146 @@
 type: edu
 custom_name: replace switch with polymorphism
 files:
-  - name: task.py
-    visible: true
   - name: tests/refactor_test.py
     visible: false
     propagatable: false
-  - name: answer.py
+  - name: tests/regression_test.py
+    visible: false
+    propagatable: false
+  - name: task.py
     visible: true
+    placeholders:
+      - offset: 913
+        length: 61
+        placeholder_text: |2-
+                  # TODO describe_tool needed a switch for this line - build it from the fields
+                  pass
+      - offset: 1337
+        length: 362
+        placeholder_text: |2-
+                  # TODO accept exactly [description]: a non-empty string of at most MAX_DESC_LEN
+                  pass
+      - offset: 1774
+        length: 106
+        placeholder_text: |2-
+                  # TODO charge IMAGE_PRICE, then return the image Asset carrying IMAGE_B64
+                  pass
+      - offset: 2099
+        length: 517
+        placeholder_text: |2-
+                  # TODO accept exactly [src_id, description]: both non-empty,
+                  # TODO description at most MAX_DESC_LEN
+                  pass
+      - offset: 2691
+        length: 110
+        placeholder_text: |2-
+                  # TODO charge EDIT_PRICE, then return the image Asset carrying EDIT_IMAGE_B64
+                  pass
+      - offset: 3004
+        length: 745
+        placeholder_text: |2-
+                  # TODO accept [description, duration_seconds]: description non-empty and at
+                  # TODO most MAX_DESC_LEN, duration a positive number of at most VIDEO_MAX_DURATION
+                  pass
+      - offset: 3824
+        length: 137
+        placeholder_text: |2-
+                  # TODO charge duration_seconds * VIDEO_PRICE_PER_SECOND,
+                  # TODO then return the video Asset carrying VIDEO_B64
+                  pass
+      - offset: 3964
+        length: 194
+        placeholder_text: |2-
+          # TODO the behaviour still lives in the module-level switch below: move each
+          # TODO branch into the matching tool class, then replace this with one registry.
+
+          available_tools = [
+              "image-gen",
+              "edit-image",
+              "video-gen",
+          ]
+
+
+          def describe_tool(tool_name: str) -> str:
+              if tool_name == "image-gen":
+                  desc = "Generate a image. args: [{description}]"
+              elif tool_name == "edit-image":
+                  desc = "Edit src image, and generate a new image. args: [{src_id}, {description}]"
+              elif tool_name == "video-gen":
+                  desc = "Generate a video. args: [{description}, {duration_seconds}]"
+              else:
+                  raise ValueError(f"unknown tool: {tool_name}")
+
+              return f"name: {tool_name}, description: {desc}"
+
+
+          def validate_arg(tool_name: str, args: list[Any]) -> None:
+              if tool_name == "image-gen":
+                  if len(args) != 1:
+                      raise ValueError("image-gen expects 1 arg: [description]")
+                  desc = args[0]
+                  if not isinstance(desc, str) or not desc:
+                      raise ValueError("description must be a non-empty string")
+                  if len(desc) > MAX_DESC_LEN:
+                      raise ValueError(f"description too long: {len(desc)} > {MAX_DESC_LEN}")
+              elif tool_name == "edit-image":
+                  if len(args) != 2:
+                      raise ValueError("edit-image expects 2 args: [src_id, description]")
+                  src_id = args[0]
+                  if not isinstance(src_id, str) or not src_id:
+                      raise ValueError("src_id must be a non-empty string")
+                  desc = args[1]
+                  if not isinstance(desc, str) or not desc:
+                      raise ValueError("description must be a non-empty string")
+                  if len(desc) > MAX_DESC_LEN:
+                      raise ValueError(f"description too long: {len(desc)} > {MAX_DESC_LEN}")
+              elif tool_name == "video-gen":
+                  if len(args) != 2:
+                      raise ValueError("video-gen expects 2 args: [description, duration_seconds]")
+                  desc = args[0]
+                  if not isinstance(desc, str) or not desc:
+                      raise ValueError("description must be a non-empty string")
+                  if len(desc) > MAX_DESC_LEN:
+                      raise ValueError(f"description too long: {len(desc)} > {MAX_DESC_LEN}")
+                  duration = args[1]
+                  if not isinstance(duration, (int, float)):
+                      raise ValueError("duration_seconds must be a number")
+                  if duration <= 0:
+                      raise ValueError("duration_seconds must be positive")
+                  if duration > VIDEO_MAX_DURATION:
+                      raise ValueError(f"duration too long: {duration} > {VIDEO_MAX_DURATION}")
+              else:
+                  raise ValueError(f"unknown tool: {tool_name}")
+
+
+          def execute(tool_name: str, args: list[Any], env: Env) -> Asset:
+              if tool_name == "image-gen":
+                  env.charge(IMAGE_PRICE)
+                  return Asset(b64_json=IMAGE_B64, media_type=Asset.MediaType.Image)
+              elif tool_name == "edit-image":
+                  env.charge(EDIT_PRICE)
+                  return Asset(b64_json=EDIT_IMAGE_B64, media_type=Asset.MediaType.Image)
+              elif tool_name == "video-gen":
+                  env.charge(round(args[1] * VIDEO_PRICE_PER_SECOND, 2))
+                  return Asset(b64_json=VIDEO_B64, media_type=Asset.MediaType.Video)
+              else:
+                  raise ValueError(f"unknown tool: {tool_name}")
+      - offset: 4193
+        length: 73
+        placeholder_text: |2-
+              # TODO the descriptions still come from the switch: ask each tool instead
+              tool_prompts = "\n".join(describe_tool(name) for name in available_tools)
+      - offset: 4421
+        length: 337
+        placeholder_text: |2-
+              # TODO this still calls the module-level switch: look the tool up and let it work
+              if tool_name not in available_tools:
+                  return f"unknown tool: {tool_name}"
+
+              try:
+                  validate_arg(tool_name, args)
+                  asset = execute(tool_name, args, env)
+              except Exception as exc:
+                  return f"{tool_name} failed: {exc}"
+
+              return f"{tool_name} returned {asset.media_type.value}: {asset.b64_json}"
