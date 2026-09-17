@@ -1,0 +1,61 @@
+type: edu
+custom_name: encapsulate global variables
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 405
+        length: 61
+        placeholder_text: |2-
+                  # TODO read the private camera position through this property, under the camera lock
+                  pass
+      - offset: 518
+        length: 62
+        placeholder_text: |2-
+                  # TODO read the private camera zoom through this property, under the camera lock
+                  pass
+      - offset: 769
+        length: 121
+        placeholder_text: |2-
+                  # TODO move the pan logic from the pan() worker here, under the camera lock
+                  pass
+      - offset: 942
+        length: 187
+        placeholder_text: |2-
+                  # TODO move the zoom validation and clamping from the zoom() worker here, under the camera lock
+                  pass
+      - offset: 1132
+        length: 32
+        placeholder_text: |-
+          # TODO the camera state is still global, delete these and let CameraManager own it
+          camera_pos: Tuple[float, float] = (0.0, 0.0)
+          camera_zoom: float = 1.0
+          camera_mutex: threading.Lock = threading.Lock()
+      - offset: 1317
+        length: 44
+        placeholder_text: |2-
+                      # TODO the pan still pokes the global camera state, delegate to camera_manager.delta_pos
+                      global camera_pos
+                      with camera_mutex:
+                          camera_pos = (camera_pos[0] + 1, camera_pos[1] + 2)
+      - offset: 1400
+        length: 42
+        placeholder_text: |2-
+                  # TODO the zoom still touches the global camera state, delegate to camera_manager.factor_zoom
+                  global camera_zoom
+                  if factor <= 0:
+                      raise ValueError("zoom factor must be positive")
+                  with camera_mutex:
+                      camera_zoom = min(CAMERA_MAX_ZOOM, max(CAMERA_MIN_ZOOM, camera_zoom * factor))
+      - offset: 1704
+        length: 25
+        placeholder_text: camera_pos
+      - offset: 1753
+        length: 26
+        placeholder_text: camera_zoom
+  - name: tests/regression_test.py
+    visible: false
+    propagatable: false
+  - name: tests/refactor_test.py
+    visible: false
+    propagatable: false

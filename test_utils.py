@@ -159,3 +159,109 @@ def call_and_capture_stdout(func, *args, **kwargs) -> str:
         sys.stdout = old_stdout
     return captured.getvalue()
 
+
+def collect_module_level_bound_names(module: ast.Module) -> set[str]:
+    """Every name bound at module level by an assignment or an annotated assignment."""
+    names: set[str] = set()
+    for node in module.body:
+        if isinstance(node, ast.Assign):
+            for target in node.targets:
+                if isinstance(target, ast.Name):
+                    names.add(target.id)
+        elif isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name):
+            names.add(node.target.id)
+    return names
+
+
+def collect_global_declared_names(module: ast.Module) -> set[str]:
+    """Every name declared with a `global` statement anywhere in the module."""
+    names: set[str] = set()
+    for node in ast.walk(module):
+        if isinstance(node, ast.Global):
+            names.update(node.names)
+    return names
+
+
+def collect_decorator_names(function_node: ast.FunctionDef) -> list[str]:
+    return [ast.unparse(decorator) for decorator in function_node.decorator_list]
+
+
+def collect_attribute_chains(node: ast.AST) -> set[str]:
+    """Every dotted expression inside `node`, e.g. {"camera_manager.delta_pos"}."""
+    return {
+        ast.unparse(item)
+        for item in ast.walk(node)
+        if isinstance(item, ast.Attribute)
+    }
+
+
+def collect_param_names(function_node: ast.FunctionDef) -> list[str]:
+    return [argument.arg for argument in function_node.args.args]
+
+
+def collect_assigned_attribute_values(
+        function_node: ast.FunctionDef,
+        receiver_name: str,
+) -> dict[str, str]:
+    """Map the attributes assigned on `receiver` to their unparsed value.
+
+    ``self._mutex = threading.Lock()`` yields ``{"_mutex": "threading.Lock()"}``.
+    """
+    values: dict[str, str] = {}
+    for node in ast.walk(function_node):
+        if not isinstance(node, ast.Assign):
+            continue
+        for target in node.targets:
+            if (
+                    isinstance(target, ast.Attribute)
+                    and isinstance(target.value, ast.Name)
+                    and target.value.id == receiver_name
+            ):
+                values[target.attr] = ast.unparse(node.value)
+    return values
+
+
+def collect_raised_exception_names(function_node: ast.FunctionDef) -> list[str]:
+    names: list[str] = []
+    for node in ast.walk(function_node):
+        if isinstance(node, ast.Raise) and node.exc is not None:
+            raised = node.exc.func if isinstance(node.exc, ast.Call) else node.exc
+            names.append(ast.unparse(raised))
+    return names
+
+
+def has_with_item_over_attribute(
+        function_node: ast.FunctionDef,
+        attr_name: str,
+        receiver_name: str | None = None,
+) -> bool:
+    """Whether a `with` statement in this function takes the attribute as a context manager."""
+    for node in ast.walk(function_node):
+        if not isinstance(node, ast.With):
+            continue
+        for item in node.items:
+            context = item.context_expr
+            if not isinstance(context, ast.Attribute) or context.attr != attr_name:
+                continue
+            if receiver_name is None:
+                return True
+            if isinstance(context.value, ast.Name) and context.value.id == receiver_name:
+                return True
+    return False
+
+
+def has_return_attribute_in_func_def(
+        function_node: ast.FunctionDef,
+        attr_name: str,
+        receiver_name: str | None = None,
+) -> bool:
+    for node in ast.walk(function_node):
+        if not isinstance(node, ast.Return) or not isinstance(node.value, ast.Attribute):
+            continue
+        if node.value.attr != attr_name:
+            continue
+        if receiver_name is None:
+            return True
+        if isinstance(node.value.value, ast.Name) and node.value.value.id == receiver_name:
+            return True
+    return False
