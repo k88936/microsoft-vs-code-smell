@@ -1,5 +1,5 @@
 type: theory
 custom_name: What is Divergent Change code smell
 files:
-  - name: main.py
+  - name: task.py
     visible: true

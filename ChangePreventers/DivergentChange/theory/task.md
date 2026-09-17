@@ -4,4 +4,4 @@ these four functions every time there is a new financial instrument,” this is 
 database interaction and financial processing problems are separate contexts, and we can make our programming life
 better by moving such contexts into separate modules
 
-[//]: # (TODO anim with ballon .xian ren zhang .. ) 
+<img src="../../../res/diverged-change.webp">
