@@ -50,17 +50,17 @@ files:
                   pass
       - offset: 3964
         length: 194
-        placeholder_text: |2-
+        placeholder_text: |-
           # TODO the behaviour still lives in the module-level switch below: move each
           # TODO branch into the matching tool class, then replace this with one registry.
-
+          
           available_tools = [
               "image-gen",
               "edit-image",
               "video-gen",
           ]
-
-
+          
+          
           def describe_tool(tool_name: str) -> str:
               if tool_name == "image-gen":
                   desc = "Generate a image. args: [{description}]"
@@ -70,10 +70,10 @@ files:
                   desc = "Generate a video. args: [{description}, {duration_seconds}]"
               else:
                   raise ValueError(f"unknown tool: {tool_name}")
-
+          
               return f"name: {tool_name}, description: {desc}"
-
-
+          
+          
           def validate_arg(tool_name: str, args: list[Any]) -> None:
               if tool_name == "image-gen":
                   if len(args) != 1:
@@ -111,8 +111,8 @@ files:
                       raise ValueError(f"duration too long: {duration} > {VIDEO_MAX_DURATION}")
               else:
                   raise ValueError(f"unknown tool: {tool_name}")
-
-
+          
+          
           def execute(tool_name: str, args: list[Any], env: Env) -> Asset:
               if tool_name == "image-gen":
                   env.charge(IMAGE_PRICE)
@@ -136,11 +136,11 @@ files:
               # TODO this still calls the module-level switch: look the tool up and let it work
               if tool_name not in available_tools:
                   return f"unknown tool: {tool_name}"
-
+        
               try:
                   validate_arg(tool_name, args)
                   asset = execute(tool_name, args, env)
               except Exception as exc:
                   return f"{tool_name} failed: {exc}"
-
+        
               return f"{tool_name} returned {asset.media_type.value}: {asset.b64_json}"
