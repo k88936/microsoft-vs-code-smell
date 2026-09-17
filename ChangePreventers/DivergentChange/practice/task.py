@@ -135,19 +135,21 @@ class UIEditor:
         self.camera_manager.factor_zoom(factor)
 
     def fit_to_window(self, window_size: Tuple[int, int]) -> None:
-        # simplified: the tree read stays unlocked
-        if not self.ui_trees:
-            raise ValueError("cannot fit an empty editor")
+        # the trees are editor state, so the read stays under the editor lock
+        with self.mutex:
+            if not self.ui_trees:
+                raise ValueError("cannot fit an empty editor")
 
-        tree_bounds = [
-            Bounds(
-                tree.root.position[0],
-                tree.root.position[1],
-                tree.root.position[0] + tree.root.size[0],
-                tree.root.position[1] + tree.root.size[1],
-            )
-            for tree in self.ui_trees
-        ]
+            tree_bounds = [
+                Bounds(
+                    tree.root.position[0],
+                    tree.root.position[1],
+                    tree.root.position[0] + tree.root.size[0],
+                    tree.root.position[1] + tree.root.size[1],
+                )
+                for tree in self.ui_trees
+            ]
+
         # this is a good boundary to split
         self.camera_manager.fit_to_bounds(window_size, tree_bounds)
 

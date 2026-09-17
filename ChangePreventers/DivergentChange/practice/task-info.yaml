@@ -51,7 +51,7 @@ files:
                       raise ValueError("zoom factor must be positive")
                   with self.camera_mutex:
                       self.camera_zoom = min(CAMERA_MAX_ZOOM, max(CAMERA_MIN_ZOOM, self.camera_zoom * factor))
-      - offset: 4496
+      - offset: 4593
         length: 67
         placeholder_text: |2-
                   # TODO move the window validation and the fitting maths into CameraManager.fit_to_bounds
@@ -81,9 +81,9 @@ files:
                   with self.camera_mutex:
                       self.camera_pos = camera_pos
                       self.camera_zoom = min(CAMERA_MAX_ZOOM, max(CAMERA_MIN_ZOOM, camera_zoom))
-      - offset: 5837
+      - offset: 5934
         length: 30
-        placeholder_text: "self.camera_pos"
-      - offset: 5901
+        placeholder_text: self.camera_pos
+      - offset: 5998
         length: 31
-        placeholder_text: "self.camera_zoom"
+        placeholder_text: self.camera_zoom
