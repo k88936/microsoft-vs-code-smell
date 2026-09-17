@@ -1,0 +1,89 @@
+type: edu
+custom_name: Deepen modules
+files:
+  - name: tests/regression_test.py
+    visible: false
+    propagatable: false
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 885
+        length: 117
+        placeholder_text: |2-
+                  # TODO move the pan logic from on_pan_gesture here, under the camera lock
+                  pass
+      - offset: 1054
+        length: 184
+        placeholder_text: |2-
+                  # TODO move the zoom validation and clamping from on_zoom_gesture here, under the camera lock
+                  pass
+      - offset: 1337
+        length: 1161
+        placeholder_text: |2-
+                  # TODO move the fitting logic from fit_to_window here, under the camera lock
+                  pass
+      - offset: 2668
+        length: 33
+        placeholder_text: |2-
+              # TODO replace the raw camera state and its lock with one CameraManager field
+              camera_pos: Tuple[float, float]
+              camera_zoom: float
+              camera_mutex: threading.Lock
+      - offset: 2901
+        length: 45
+        placeholder_text: |2-
+                  # TODO let the camera manager own the camera state
+                  self.camera_pos = (0.0, 0.0)
+                  self.camera_zoom = 1.0
+                  self.camera_mutex = threading.Lock()
+      - offset: 3755
+        length: 47
+        placeholder_text: |2-
+                  # TODO stop reaching into the camera here: delegate the pan to CameraManager.delta_pos
+                  with self.camera_mutex:
+                      x, y = self.camera_pos
+                      self.camera_pos = (x + dx, y + dy)
+      - offset: 3894
+        length: 47
+        placeholder_text: |2-
+                  # TODO move the zoom validation and clamping into CameraManager.factor_zoom
+                  if factor <= 0:
+                      raise ValueError("zoom factor must be positive")
+                  with self.camera_mutex:
+                      self.camera_zoom = min(CAMERA_MAX_ZOOM, max(CAMERA_MIN_ZOOM, self.camera_zoom * factor))
+      - offset: 4496
+        length: 67
+        placeholder_text: |2-
+                  # TODO move the window validation and the fitting maths into CameraManager.fit_to_bounds
+                  window_width, window_height = window_size
+                  if window_width <= 0 or window_height <= 0:
+                      raise ValueError("window size must be positive")
+        
+                  final_bound = Bounds(
+                      min(bound.left for bound in tree_bounds),
+                      min(bound.top for bound in tree_bounds),
+                      max(bound.right for bound in tree_bounds),
+                      max(bound.bottom for bound in tree_bounds),
+                  )
+        
+                  # compute camera zoom and pos from the fit bounds
+                  content_width = final_bound.right - final_bound.left
+                  content_height = final_bound.bottom - final_bound.top
+                  if content_width <= 0 or content_height <= 0:
+                      raise ValueError("bounds must have a positive size")
+        
+                  camera_pos = (
+                      (final_bound.left + final_bound.right) / 2,
+                      (final_bound.top + final_bound.bottom) / 2,
+                  )
+                  camera_zoom = min(window_width / content_width, window_height / content_height)
+        
+                  with self.camera_mutex:
+                      self.camera_pos = camera_pos
+                      self.camera_zoom = min(CAMERA_MAX_ZOOM, max(CAMERA_MIN_ZOOM, camera_zoom))
+      - offset: 5837
+        length: 30
+        placeholder_text: "self.camera_pos"
+      - offset: 5901
+        length: 31
+        placeholder_text: "self.camera_zoom"
