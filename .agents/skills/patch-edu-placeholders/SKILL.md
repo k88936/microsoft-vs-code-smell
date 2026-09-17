@@ -13,7 +13,7 @@ description:  patch the before-refactor to after-refactor as placeholder for Jet
 
 ## Tool guarantees
 
-* Placeholder text that does not start with a `# TODO` comment is rejected.
+* Placeholder text that spans more than one line must start with a `# TODO` comment. A single-line replacement stays the plain token or expression it replaces, because a comment cannot live inside an expression.
 * A multi-line replacement is widened to the whole physical line, also when a one-line `old_string` was matched inside a deeper indentation. So the lines that follow keep their indentation and their length. If real code sits before the region on that line, the patch is rejected instead of corrupting the file.
 * A region never keeps the line break that ends its last line: whenever both sides end with a line break the tool drops it from both, so a `length` stops on the last visible character and carries no tail into the next line.
 * To rebuild a placeholder set, drop the `placeholders:` block and append every entry again with `--append`.

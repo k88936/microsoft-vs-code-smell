@@ -193,6 +193,16 @@ def starts_with_todo(text: str) -> bool:
     return first_line.strip().startswith("# TODO")
 
 
+def needs_todo(text: str) -> bool:
+    """Only a block replacement must be led by a TODO comment.
+
+    A token-level placeholder lives inside one line, where a `# TODO` comment
+    would swallow the rest of that line. Such text keeps the shape of the
+    expression it replaces instead.
+    """
+    return "\n" in text or "\r" in text
+
+
 def normalize_replacement_bounds(
     source: str,
     offset: int,
@@ -395,10 +405,10 @@ def main() -> None:
         offset, old_string, new_string = normalize_replacement_bounds(
             source_text, offset, old_string, new_string
         )
-        if not starts_with_todo(new_string):
+        if needs_todo(new_string) and not starts_with_todo(new_string):
             raise ValueError(
-                "placeholder text must start with a '# TODO' comment; widen the "
-                "region to whole lines instead of patching mid-expression"
+                "a multi-line placeholder text must start with a '# TODO' comment; "
+                "widening the region to whole lines is the way to hint a block of code"
             )
         update_task_info(
             task_info=task_info,
