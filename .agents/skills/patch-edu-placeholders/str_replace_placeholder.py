@@ -110,12 +110,100 @@ def ensure_separated(
             )
 
 
+def trailing_newlines(text: str) -> int:
+    match = re.search(r"(?:(?:\r\n)|\r|\n)+$", text)
+    if not match:
+        return 0
+    return len(re.findall(r"\r\n|\r|\n", match.group(0)))
+
+
+def drop_trailing_newline(text: str) -> str:
+    if text.endswith("\r\n"):
+        return text[:-2]
+    return text[:-1]
+
+
+def without_shared_trailing_newline(old_string: str, new_string: str) -> tuple[str, str]:
+    """Keep the line break that ends the region out of it.
+
+    A region that carries its own line break stops on the first column of the
+    next line, so the recorded length grows a tail that belongs to that next
+    line. Whenever both sides end with a line break, drop it from both: the line
+    break stays in the source and the rendered text is unchanged.
+    """
+    while (
+        trailing_newlines(old_string)
+        and trailing_newlines(new_string)
+        and drop_trailing_newline(old_string).strip()
+    ):
+        old_string = drop_trailing_newline(old_string)
+        new_string = drop_trailing_newline(new_string)
+    return old_string, new_string
+
+
+def indent_continuation_lines(text: str, indentation: str) -> str:
+    """Indent every line of text except the first, which already has its own."""
+    lines = text.split("\n")
+    return "\n".join(
+        [lines[0], *[indentation + line if line else line for line in lines[1:]]]
+    )
+
+
+def align_multiline_replacement(
+    source: str,
+    offset: int,
+    old_string: str,
+    new_string: str,
+) -> tuple[int, str, str]:
+    """Widen a mid-line region to whole lines when the replacement spans lines.
+
+    A multi-line replacement inserted in the middle of a line inherits no
+    indentation, and every line after the first lands at column zero. When the
+    text before the region is only indentation, correct it by widening the
+    region to the whole physical line and indenting the whole replacement.
+    """
+    if "\n" not in new_string or "\n" in old_string:
+        return offset, old_string, new_string
+
+    line_start = source.rfind("\n", 0, offset) + 1
+    prefix = source[line_start:offset]
+    line_break = source.find("\n", offset + len(old_string))
+    line_end = len(source) if line_break == -1 else line_break
+    suffix = source[offset + len(old_string):line_end]
+    if prefix.strip() or suffix.strip():
+        raise ValueError(
+            "a multi-line replacement must cover whole lines; pass an old_string "
+            "that starts at the beginning of a line and ends at the end of one"
+        )
+
+    replacement = prefix + indent_continuation_lines(new_string, prefix)
+    if trailing_newlines(replacement):
+        # the widened region stops before the line break, the source keeps it
+        replacement = drop_trailing_newline(replacement)
+
+    return (
+        line_start,
+        source[line_start:line_end],
+        replacement,
+    )
+
+
+def starts_with_todo(text: str) -> bool:
+    first_line = text.split("\n", 1)[0]
+    return first_line.strip().startswith("# TODO")
+
+
 def normalize_replacement_bounds(
     source: str,
     offset: int,
     old_string: str,
     new_string: str,
 ) -> tuple[int, str, str]:
+    old_string, new_string = without_shared_trailing_newline(old_string, new_string)
+    offset, old_string, new_string = align_multiline_replacement(
+        source, offset, old_string, new_string
+    )
+
     token_replacement = re.fullmatch(
         r"[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*(?:\([^()\r\n]*\))?",
         new_string,
@@ -214,9 +302,9 @@ def update_task_info(
 
     if block is None:
         if append or placeholder_index == 0:
-            insertion = file_start + 1
-            while insertion < file_end and leading_spaces(lines[insertion]) > 4:
-                insertion += 1
+            insertion = file_end
+            while insertion > file_start + 1 and not lines[insertion - 1].strip():
+                insertion -= 1
             lines[insertion:insertion] = [f"    placeholders:{newline}", *rendered]
         else:
             raise ValueError("the file entry has no placeholders")
@@ -307,6 +395,11 @@ def main() -> None:
         offset, old_string, new_string = normalize_replacement_bounds(
             source_text, offset, old_string, new_string
         )
+        if not starts_with_todo(new_string):
+            raise ValueError(
+                "placeholder text must start with a '# TODO' comment; widen the "
+                "region to whole lines instead of patching mid-expression"
+            )
         update_task_info(
             task_info=task_info,
             file_name=file_name,
