@@ -72,8 +72,12 @@ additional_files:
   - name: Minigames/ErrorHandling/scratch.txt
   - name: res/use_observer.webp
     is_binary: true
-  - name: .agents/skills/patch-edu-placeholders/str_replace_placeholder.py
-  - name: .agents/skills/patch-edu-placeholders/render_placeholders.py
   - name: res/insider-trading.webp
+    is_binary: true
+  - name: res/diverged-change.webp
+    is_binary: true
+  - name: res/ui-editor.webp
+    is_binary: true
+  - name: res/(im)mutable.webp
     is_binary: true
 yaml_version: 6
