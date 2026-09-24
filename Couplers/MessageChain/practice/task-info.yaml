@@ -1,4 +1,25 @@
 type: edu
+custom_name: hide delegate the message chain
 files:
   - name: task.py
     visible: true
+    placeholders:
+      - offset: 345
+        length: 8
+        placeholder_text: |2-
+                  # TODO return True when the draft holds no text and no references
+                  pass
+      - offset: 369
+        length: 30
+        placeholder_text: |2-
+                  # TODO expose the references as an Iterable instead of the inner list
+                  pass
+      - offset: 597
+        length: 16
+        placeholder_text: draft.text.value.strip() == "" and not draft.references
+      - offset: 698
+        length: 22
+        placeholder_text: draft.references
+  - name: tests/refactor_test.py
+    visible: false
+    propagatable: false
