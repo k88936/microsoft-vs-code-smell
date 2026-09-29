@@ -5,19 +5,19 @@ files:
     visible: true
     placeholders:
       - offset: 345
-        length: 8
+        length: 74
         placeholder_text: |2-
                   # TODO return True when the draft holds no text and no references
                   pass
-      - offset: 369
+      - offset: 474
         length: 30
         placeholder_text: |2-
                   # TODO expose the references as an Iterable instead of the inner list
                   pass
-      - offset: 597
+      - offset: 702
         length: 16
         placeholder_text: draft.text.value.strip() == "" and not draft.references
-      - offset: 698
+      - offset: 803
         length: 22
         placeholder_text: draft.references
   - name: tests/refactor_test.py
