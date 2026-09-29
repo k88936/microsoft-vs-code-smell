@@ -6,7 +6,7 @@ files:
     placeholders:
       - offset: 71
         length: 117
-        placeholder_text: "lang = \"zh\""
+        placeholder_text: lang = "zh"
       - offset: 461
         length: 180
         placeholder_text: |2-
