@@ -80,4 +80,10 @@ additional_files:
     is_binary: true
   - name: res/(im)mutable.webp
     is_binary: true
+  - name: res/rich-text.jpg
+    is_binary: true
+  - name: res/global_data.webp
+    is_binary: true
+  - name: res/dataclass.webp
+    is_binary: true
 yaml_version: 6
