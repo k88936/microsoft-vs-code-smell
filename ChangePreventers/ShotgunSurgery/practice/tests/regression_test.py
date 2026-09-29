@@ -1,7 +1,15 @@
+import sys
 import unittest
+from pathlib import Path
 
-from ShotgunSurgery.practice.thu_info_cli import Profile, get_dorm_info, get_sports_info
-from ShotgunSurgery.practice.i18n import set_language, I18nLanguage
+sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
+
+from ChangePreventers.ShotgunSurgery.practice.thu_info_cli import (
+    Profile,
+    get_dorm_info,
+    get_sports_info,
+)
+from ChangePreventers.ShotgunSurgery.practice.i18n import set_language, I18nLanguage
 
 
 def print_all():
@@ -12,12 +20,6 @@ def print_all():
 class TestCase(unittest.TestCase):
 
     def test_en(self):
-
-        try:
-            from ShotgunSurgery.practice.thu_info_cli import set_lang
-            set_lang("en")
-        except:
-            pass
         set_language(I18nLanguage.EN)
 
         output = print_all()
@@ -27,12 +29,6 @@ class TestCase(unittest.TestCase):
         assert 'swim' in output
 
     def test_zh(self):
-
-        try:
-            from ShotgunSurgery.practice.thu_info_cli import set_lang
-            set_lang("zn")
-        except:
-            pass
         set_language(I18nLanguage.ZH)
 
         output = print_all()

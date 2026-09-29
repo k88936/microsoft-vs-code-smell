@@ -42,6 +42,8 @@ additional_files:
     is_binary: true
   - name: res/long_param_list.png
     is_binary: true
+  - name: res/data_clumps.webp
+    is_binary: true
   - name: res/primitive_obsession.webp
     is_binary: true
   - name: res/duplicated_code.webp
@@ -57,6 +59,7 @@ additional_files:
   - name: res/long_function.webp
     is_binary: true
   - name: res/loops.webp
+    is_binary: true
   - name: res/shotgun_surgery.webp
     is_binary: true
   - name: res/some_achievement.jpeg

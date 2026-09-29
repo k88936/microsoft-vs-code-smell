@@ -6,8 +6,9 @@ files:
     placeholders:
       - offset: 65
         length: 78
-        placeholder_text: |2
+        placeholder_text: |2-
               # TODO
+              pass
       - offset: 145
         length: 360
         placeholder_text: |-

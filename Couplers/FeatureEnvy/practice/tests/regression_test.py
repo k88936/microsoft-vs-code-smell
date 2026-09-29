@@ -1,6 +1,10 @@
+import sys
 import unittest
+from pathlib import Path
 
-from FeatureEnvy.practice.car import Car
+sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
+
+from Couplers.FeatureEnvy.practice.car import Car
 
 
 class RegressionTest(unittest.TestCase):
@@ -17,4 +21,3 @@ class RegressionTest(unittest.TestCase):
         assert car.brake == True , "car brake should be on after drive"
         assert car.engine_started == False , "car engine should be off after drive"
         assert car.gear == 0 , "car gear should be 0 after drive"
-

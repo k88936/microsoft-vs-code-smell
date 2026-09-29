@@ -4,58 +4,77 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 537
-        length: 51
-        placeholder_text: "    # TODO"
-      - offset: 631
-        length: 52
-        placeholder_text: "    # TODO"
-      - offset: 727
-        length: 79
-        placeholder_text: "    # TODO"
-      - offset: 950
-        length: 0
+      - offset: 494
+        length: 93
         placeholder_text: |2-
+          class Resizeable(ABC):
               # TODO
+              pass
+      - offset: 590
+        length: 92
+        placeholder_text: |2-
+          class Scalable(ABC):
+              # TODO
+              pass
+      - offset: 685
+        length: 120
+        placeholder_text: |2-
+          class Choppable(ABC):
+              # TODO
+              pass
+      - offset: 902
+        length: 51
+        placeholder_text: |2+
+              def move(self, new_pos: Vec2):
+                  pass
+
               @abstractmethod
               def resize(self, new_size: Vec2):
                   pass
-        
-              # TODO
+
               @abstractmethod
               def chop(self, view_left_top: Vec2, view_right_bottom: Vec2):
                   pass
+
+
+
       - offset: 953
-        length: 36
-        placeholder_text: |-
+        length: 37
+        placeholder_text: |2-
           # TODO
           class Rectangle(Element):
-      - offset: 1389
-        length: 0
-        placeholder_text: |2-
+      - offset: 1359
+        length: 33
+        placeholder_text: |2+
+                  self.size = new_size
+
               @override
               def chop(self, view_left_top: Vec2, view_right_bottom: Vec2):
-                  # not supported operation
+                  # TODO: Rectangle does not support chopping
                   pass
+
+
+
+
       - offset: 1392
-        length: 43
-        placeholder_text: |-
+        length: 42
+        placeholder_text: |2-
           # TODO
           class Image(Element):
-      - offset: 1623
-        length: 0
+      - offset: 1560
+        length: 117
         placeholder_text: |2-
-              # TODO
+              def move(self, new_pos: Vec2):
+                  self.pos = new_pos
+
               @override
               def resize(self, new_size: Vec2):
-                  # not support free scaling
+                  # TODO: Image does not support free resizing
                   pass
-      - offset: 1625
-        length: 13
-        placeholder_text: "    # TODO"
-      - offset: 1710
-        length: 13
-        placeholder_text: "    # TODO"
+
+
+              @override
+              def scale(self, new_scale: float):
   - name: tests/refactor_test.py
     visible: false
     propagatable: false

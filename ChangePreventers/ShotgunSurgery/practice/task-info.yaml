@@ -4,16 +4,19 @@ files:
   - name: thu_info_cli.py
     visible: true
     placeholders:
-      - offset: 423
-        length: 181
-        placeholder_text: |2
+      - offset: 71
+        length: 117
+        placeholder_text: "lang = \"zh\""
+      - offset: 461
+        length: 180
+        placeholder_text: |2-
               # TODO
               return (
                 f"{profile.name}, 你的宿舍评分为: {info["score"]}\n 你的宿舍是{info["stars"]}星好宿舍" if lang == "zh"
                 else f"{profile.name}, your dorm score is: {info["score"]}\n your dorm is {info["stars"]} stars")
-      - offset: 680
-        length: 272
-        placeholder_text: |2
+      - offset: 718
+        length: 271
+        placeholder_text: |2-
               # TODO
               swim_pass_str_zh = '已通过' if info['swim_passed'] else '未通过'
               swim_pass_str_en = 'passed' if info['swim_passed'] else 'not passed'
@@ -21,11 +24,12 @@ files:
               f"{profile.name}, 你的游泳测试{swim_pass_str_zh}\n 你的体育预约评分为: {info['reservation_score']}" if lang == "zh"
               else f"{profile.name}, your swimming test is {swim_pass_str_en}\n your sports reservation score is: {info['reservation_score']}"
               )
-      - offset: 1498
-        length: 76
-        placeholder_text: |2
+      - offset: 1536
+        length: 75
+        placeholder_text: |2-
               # TODO
-              set_lang(args.lang)
+              global lang
+              lang = args.lang
   - name: tests/regression_test.py
     visible: true
     propagatable: false

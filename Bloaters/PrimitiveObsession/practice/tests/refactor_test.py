@@ -1,6 +1,9 @@
 import ast
+import sys
 import unittest
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
 
 from test_utils import (
     collect_class_def_from_module,

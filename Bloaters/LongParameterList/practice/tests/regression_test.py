@@ -1,4 +1,8 @@
+import sys
 import unittest
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
 
 from Bloaters.LongParameterList.practice.task import Achievement, print_achievement
 from test_utils import call_and_capture_stdout
