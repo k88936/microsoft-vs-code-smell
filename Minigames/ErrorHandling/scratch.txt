@@ -1,3 +1,5 @@
 special case
 
 null
+
+https://tpme.vonng.com/ch3/ (but this is beyond the "code smell" topic)
