@@ -1,0 +1,5 @@
+type: theory
+custom_name: What is Mutable Data code smell
+files:
+  - name: task.py
+    visible: true

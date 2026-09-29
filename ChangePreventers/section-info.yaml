@@ -2,4 +2,6 @@ custom_name: Level 3 Change Preventers
 content:
   - Introduce
   - ShotgunSurgery
+  - MutableData
+  - GlobalData
   - DivergentChange
