@@ -45,7 +45,14 @@ def parse_placeholder(lines: list[str]) -> tuple[int, int, str]:
     if value.startswith("|"):
         replacement = parse_block_scalar(lines[3:], value)
     elif value.startswith('"'):
-        replacement = json.loads(value)
+        try:
+            replacement = json.loads(value)
+        except json.JSONDecodeError:
+            # A hand written entry may use YAML double quoted folding
+            # (a trailing backslash continues the scalar, "\ " escapes a space).
+            import yaml
+
+            replacement = yaml.safe_load(value)
     elif value.startswith("'"):
         replacement = value[1:-1].replace("''", "'")
     else:
@@ -54,6 +61,23 @@ def parse_placeholder(lines: list[str]) -> tuple[int, int, str]:
 
 
 def load_placeholders(task_info: Path, file_name: str) -> list[tuple[int, int, str]]:
+    # Prefer a real YAML load: it also understands the double quoted multi line
+    # scalars that a human may have written by hand.  The manual parser below
+    # stays as a fallback for task-info files that are not valid YAML.
+    try:
+        import yaml
+
+        data = yaml.safe_load(read_text(task_info))
+        for entry in data.get("files", []):
+            if entry.get("name") == file_name:
+                return [
+                    (item["offset"], item["length"], item["placeholder_text"])
+                    for item in entry.get("placeholders") or []
+                ]
+        return []
+    except Exception:
+        pass
+
     lines = read_text(task_info).splitlines(keepends=True)
     file_start, file_end = find_file_block(lines, file_name)
     block = find_placeholders_block(lines, file_start, file_end)
