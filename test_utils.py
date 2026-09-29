@@ -265,3 +265,32 @@ def has_return_attribute_in_func_def(
         if isinstance(node.value.value, ast.Name) and node.value.value.id == receiver_name:
             return True
     return False
+
+
+def get_module_level_assignment(module: ast.Module, name: str) -> ast.expr | None:
+    """The value assigned to `name` at module level, or None when it is not assigned."""
+    for node in module.body:
+        if not isinstance(node, ast.Assign):
+            continue
+        for target in node.targets:
+            if isinstance(target, ast.Name) and target.id == name:
+                return node.value
+    return None
+
+
+def get_union_member_names(node: ast.AST) -> list[str]:
+    """The names joined by `|`, e.g. ``A | B | C`` yields ``["A", "B", "C"]``."""
+    if isinstance(node, ast.Name):
+        return [node.id]
+    if isinstance(node, ast.BinOp) and isinstance(node.op, ast.BitOr):
+        return get_union_member_names(node.left) + get_union_member_names(node.right)
+    return []
+
+
+def get_class_field_annotations(cls_node: ast.ClassDef) -> list[tuple[str, str]]:
+    """(field name, unparsed annotation) for every annotated class attribute."""
+    fields: list[tuple[str, str]] = []
+    for node in cls_node.body:
+        if isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name):
+            fields.append((node.target.id, ast.unparse(node.annotation)))
+    return fields

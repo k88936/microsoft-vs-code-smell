@@ -55,11 +55,10 @@ class ImageSequenceResource:
 CanvaResource = ImageResource | VideoResource | ImageSequenceResource
 
 def to_canva_resource(dto: CanvaResourceDTO) -> CanvaResource:
-    assert dto.width is not None
-    assert dto.height is not None
-
     match dto.asset_kind:
         case AssetKind.IMAGE:
+            assert dto.width is not None
+            assert dto.height is not None
             assert dto.object_key is not None
             return ImageResource(
                 resource_id=dto.resource_id,
@@ -68,6 +67,8 @@ def to_canva_resource(dto: CanvaResourceDTO) -> CanvaResource:
                 object_key=dto.object_key,
             )
         case AssetKind.VIDEO:
+            assert dto.width is not None
+            assert dto.height is not None
             assert dto.object_key is not None
             assert dto.duration_ms is not None
             return VideoResource(
@@ -78,6 +79,8 @@ def to_canva_resource(dto: CanvaResourceDTO) -> CanvaResource:
                 duration_ms=dto.duration_ms,
             )
         case AssetKind.IMAGE_SEQUENCE:
+            assert dto.width is not None
+            assert dto.height is not None
             assert dto.image_sequence is not None
             assert dto.duration_ms is not None
             return ImageSequenceResource(

@@ -3,3 +3,52 @@ custom_name: handle nullable in advance
 files:
   - name: task.py
     visible: true
+    placeholders:
+      - offset: 468
+        length: 104
+        placeholder_text: |2-
+              # TODO keep only the fields an image always has
+              pass
+      - offset: 620
+        length: 125
+        placeholder_text: |2-
+              # TODO keep only the fields a video always has
+              pass
+      - offset: 801
+        length: 131
+        placeholder_text: |2-
+              # TODO keep only the fields an image sequence always has
+              pass
+      - offset: 934
+        length: 69
+        placeholder_text: |-
+          # TODO replace this mirrored DTO struct with the concrete union:
+          # TODO CanvaResource = ImageResource | VideoResource | ImageSequenceResource
+          @dataclass(frozen=True)
+          class CanvaResource:
+              resource_id: str
+              asset_kind: AssetKind
+              object_key: str | None
+              width: int | None
+              height: int | None
+              duration_ms: int | None
+              image_sequence: Frame | None
+      - offset: 1068
+        length: 1393
+        placeholder_text: |2-
+              # TODO convert the DTO straight to the matching concrete struct instead of mirroring it
+              return CanvaResource(
+                  resource_id=dto.resource_id,
+                  asset_kind=dto.asset_kind,
+                  object_key=dto.object_key,
+                  width=dto.width,
+                  height=dto.height,
+                  duration_ms=dto.duration_ms,
+                  image_sequence=dto.image_sequence,
+              )
+  - name: tests/correctness_test.py
+    visible: false
+    propagatable: false
+  - name: tests/refactor_test.py
+    visible: false
+    propagatable: false
