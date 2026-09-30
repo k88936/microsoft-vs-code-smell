@@ -37,5 +37,5 @@ Think about this: our *Crazy Dave* wants to support another 3 languages and add 
 
 * before adding those features, let us do a refactor first: to centralize translation logic.
 * but what is the expected effect? We can learn api design from those library we have used,
-(even in other lanuages! or framework)  look [copied i18n js alike api](i18n.py)
-* As for those features? You are an artificial intelligence, follow my mode of i18n support, finish...
+(even in other languages! or framework) look [copied i18n js alike api](i18n.py)
+* then implement those four features following the same i18n design.
