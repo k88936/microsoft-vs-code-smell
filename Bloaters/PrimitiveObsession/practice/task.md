@@ -10,7 +10,7 @@ There are some problems:
 * the whole module is vibed, not providing a strong typing for such string-typed fields.
 
 But you don't know and are required to implement the post-processing. It needs to know the width and height of the image.
-And you thought it easy and vibed code like this:
+And you thought it was easy and vibed out code like this:
 
 ```python
 def do_some_crop_and_scaling(image: DrawResult, req: GenerationRequest):
