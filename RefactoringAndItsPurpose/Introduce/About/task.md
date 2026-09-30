@@ -5,8 +5,8 @@ Welcome to **Microsoft VS Code: a tour about refactor** course.
 <img src="../../../res/microsoft-vs-code.png" width="400"/>
 </p>
 
-This course will introduce you to refactorings .You will learn to recognize refactoring opportunities (**code smell**)
-in code and to deal with them. 
+This course will introduce you to refactorings. You will learn to recognize refactoring opportunities (**code smell**)
+in code and to deal with them.
 
 # Features:
 
