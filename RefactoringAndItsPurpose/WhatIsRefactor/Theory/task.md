@@ -17,5 +17,5 @@ This is [my analysis](https://github.com/k88936/aigc-code-smell-field-research) 
 GitHub: In general, there are still many problems needed human in the loop.
 <img src="https://github.com/k88936/aigc-code-smell-field-research/blob/main/codesmell_freq.png?raw=true">
 
-In all, we should at least be able to **sence the underlying bad code**, and **apply some refactor tricks**
+In all, we should at least be able to **sense the underlying bad code**, and **apply some refactor tricks**
 (either use your IDE or ask your coding agent again).
