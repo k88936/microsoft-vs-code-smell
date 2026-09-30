@@ -1,5 +1,5 @@
 type: theory
 custom_name: What is Middle Man code smell
 files:
-  - name: main.py
+  - name: task.py
     visible: true
