@@ -1,5 +1,5 @@
 type: edu
-custom_name: Centralize Modification
+custom_name: centralize modification
 files:
   - name: thu_info_cli.py
     visible: true

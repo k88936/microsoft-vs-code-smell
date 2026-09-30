@@ -1,5 +1,5 @@
 type: edu
-custom_name: Split long function
+custom_name: split long function
 files:
   - name: tests/regression_test.py
     visible: true

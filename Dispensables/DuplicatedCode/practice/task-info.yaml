@@ -1,5 +1,5 @@
 type: edu
-custom_name: Extract duplicated code
+custom_name: extract duplicated code
 files:
   - name: tests/test.py
     visible: false

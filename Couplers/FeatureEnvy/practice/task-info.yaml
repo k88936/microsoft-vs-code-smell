@@ -1,5 +1,5 @@
 type: edu
-custom_name: Find more appropriate classes for methods
+custom_name: find more appropriate classes for methods
 files:
   - name: car.py
     visible: true
