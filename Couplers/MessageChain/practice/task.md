@@ -1,11 +1,11 @@
 # Introduce
 
 <img src="../../../res/rich-text.jpg">
-This is an example for a rich text inputer for some art agent.
+This is an example of a rich text inputter for some art agent.
 It stored the text and reference separately.
 
 look the **collect `urls_to_upload`** part and the **check input not empty** part
-they depend on inner route.
+they depend on the inner structure of the draft.
 
 imagine we have code like those everywhere,
 and later we turned to more expressive `Response API` like
@@ -19,7 +19,7 @@ class Draft:
     content: List[ContentItem]
 ```
 
-we have to mod a lot of places to adapt to the inner route change.
+we have to modify a lot of places to adapt to the inner structure change.
 
 # Task
 
