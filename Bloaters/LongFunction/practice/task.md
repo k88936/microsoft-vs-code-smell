@@ -6,9 +6,9 @@
 
 In this task, you need to split a long method into small ones.
 
-This is a program computing the bill of comedy , (for demo purpose, the given function is not quite long compared to
+This is a program computing the bill of comedy, (for demo purpose, the given function is not quite long compared to
 those monsters in the real world)  
-for example, input the example data, and ouput in text format:
+for example, input the example data, and output in text format:
 
 ```txt
 Statement for BigCo
