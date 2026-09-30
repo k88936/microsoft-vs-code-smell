@@ -2,11 +2,11 @@
 
 this is adapted from [game programming patterns](https://gameprogrammingpatterns.com/observer.html)
 
-Say we're adding an achievements system to Plants v.s. Zombies, take this as example:
+Say we're adding an achievements system to Plants vs. Zombies, take this as example:
 
 * when a potato mine killed an enemy, it will unlock the "Spudow!" achievement
 
-current impl is: on every zombie killed, it checks the cond and calls the achievement class to unlock that achievement.
+current implementation is: on every zombie killed, it checks the condition and calls the achievement class to unlock that achievement.
 
 But imagine more achievement and more other systems coming to the game,
 the challenge is that achievements are triggered by a bunch of different aspects of gameplay.
