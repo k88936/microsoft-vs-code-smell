@@ -1,5 +1,5 @@
 type: edu
-custom_name: Deepen modules
+custom_name: extract camera manager
 files:
   - name: tests/regression_test.py
     visible: false
