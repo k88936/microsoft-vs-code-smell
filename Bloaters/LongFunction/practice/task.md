@@ -28,7 +28,7 @@ Think about we are having a new feature request: ALSO support HTML format output
 * we recommend splitting it into *compute based on rules* and *render to text* 2 steps, and passing a dataclass between
   them. Thus we can easily replace the latter render method.
 
-* ps: we have written a [regression test](file:///CodeSmell/LongFunction/practice/tests/regression_test.py) to make sure
+* ps: we have written a [regression test](tests/regression_test.py) to make sure
   it remains the same behavior after refactoring.
 
 ### Hints
