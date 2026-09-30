@@ -7,7 +7,7 @@ This is an example about a canvas app:
 it has many kinds of **"canvas resources"** and can be refreshed from the remote backup server.
 
 For legacy reasons, the resource was designed with many nullable fields.
-It is no more acceptable for a number of kinds.
+It is no longer acceptable for several kinds.
 
 # Task 
 
