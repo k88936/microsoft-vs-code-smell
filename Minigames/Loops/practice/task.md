@@ -3,7 +3,7 @@
 Here are concise examples transforming a list of integers `[1, 2, 3, 4]` by doubling each element (map) and summing them (reduce)
 in different languages.
 
-we can just get a glance of their api design.
+We can just get a glance at their API design.
 
 ### Java(Stream API)
 ```java
@@ -42,7 +42,7 @@ let sum: i32 = nums.iter().map(|&x| x * 2).sum();
 
 ---
 
-However, python does not provide a oop-like builtin api; Its api is more function-like:
+However, Python does not provide an OOP-like builtin API; its API is more function-like:
 ```python
 from functools import reduce
 
@@ -56,7 +56,7 @@ and use it to rewrite the sunshine-to-damage calculation.
 
 # Task
 
-* impl the `filter` for Stream. You should use the built-in filter function. You can refer to the implementation of `map`.
+* implement the `filter` for Stream. You should use the built-in filter function. You can refer to the implementation of `map`.
 * rewrite the sunshine-to-damage calculation using Stream.
     ```python
     # example: compute the sum of (multiply 10 foreach( even numbers from 1 to 5))
