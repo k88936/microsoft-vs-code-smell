@@ -1,5 +1,5 @@
 type: edu
-custom_name: take care of string-typed
+custom_name: take care of string-typed fields
 files:
   - name: task.py
     visible: true
