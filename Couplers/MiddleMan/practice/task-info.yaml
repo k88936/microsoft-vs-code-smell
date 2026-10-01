@@ -1,7 +1,7 @@
 type: edu
 custom_name: remove middle man
 files:
-  - name: tests/test.py
+  - name: tests/test_middle_man.py
     visible: false
   - name: src/task.py
     visible: true
