@@ -6,19 +6,19 @@ files:
     placeholders:
       - offset: 494
         length: 93
-        placeholder_text: |2-
+        placeholder_text: |-
           class Resizeable(ABC):
               # TODO
               pass
       - offset: 590
         length: 92
-        placeholder_text: |2-
+        placeholder_text: |-
           class Scalable(ABC):
               # TODO
               pass
       - offset: 685
         length: 120
-        placeholder_text: |2-
+        placeholder_text: |-
           class Choppable(ABC):
               # TODO
               pass
@@ -27,11 +27,11 @@ files:
         placeholder_text: |2+
               def move(self, new_pos: Vec2):
                   pass
-
+        
               @abstractmethod
               def resize(self, new_size: Vec2):
                   pass
-
+        
               @abstractmethod
               def chop(self, view_left_top: Vec2, view_right_bottom: Vec2):
                   pass
@@ -40,14 +40,14 @@ files:
 
       - offset: 953
         length: 37
-        placeholder_text: |2-
+        placeholder_text: |-
           # TODO
           class Rectangle(Element):
       - offset: 1359
         length: 33
         placeholder_text: |2+
                   self.size = new_size
-
+        
               @override
               def chop(self, view_left_top: Vec2, view_right_bottom: Vec2):
                   # TODO: Rectangle does not support chopping
@@ -58,7 +58,7 @@ files:
 
       - offset: 1392
         length: 42
-        placeholder_text: |2-
+        placeholder_text: |-
           # TODO
           class Image(Element):
       - offset: 1560
@@ -66,13 +66,13 @@ files:
         placeholder_text: |2-
               def move(self, new_pos: Vec2):
                   self.pos = new_pos
-
+        
               @override
               def resize(self, new_size: Vec2):
                   # TODO: Image does not support free resizing
                   pass
-
-
+        
+        
               @override
               def scale(self, new_scale: float):
   - name: tests/refactor_test.py
