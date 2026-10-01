@@ -11,5 +11,5 @@ it is buggy since some caller may forget to lock or unlock the mutex.
 
 # Task
 
-extract a `singleton` camera manager to encapsulate the camera status, 
-provide restricted access to the camera status.
+extract a camera manager as a module-level single instance to encapsulate the camera status,
+and provide restricted access to the camera status.
