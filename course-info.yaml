@@ -72,7 +72,6 @@ additional_files:
     is_binary: true
   - name: res/refused_bequest.webp
     is_binary: true
-  - name: Minigames/ErrorHandling/scratch.txt
   - name: res/use_observer.webp
     is_binary: true
   - name: res/insider-trading.webp
