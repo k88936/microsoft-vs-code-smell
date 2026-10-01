@@ -22,7 +22,7 @@ The resulting data structure has the same shape and size as the original.
 
 Filter is to apply a test to every item in the series.
 Sometimes, however, we want a version of our data structure with fewer elements than the original. Maybe we have a
-bunch of peas, but we’re only interested in the fried ones.
+bunch of peas, but we’re only interested in the Fire Peas.
 
 ## Reduce
 
@@ -35,4 +35,3 @@ Beyond the World of Microsoft vs. Code,
 * Map a list of user record sets to just usernames!
 * Filter a list of users to just active users!
 * Reduce a list of users to a dictionary, with ids as keys, for faster lookups!
-
