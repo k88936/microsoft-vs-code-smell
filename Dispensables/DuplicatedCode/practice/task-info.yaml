@@ -1,7 +1,7 @@
 type: edu
 custom_name: extract duplicated code
 files:
-  - name: tests/test_duplicated_code.py
+  - name: tests/refactor_test.py
     visible: false
   - name: task.py
     visible: true
