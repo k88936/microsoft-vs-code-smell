@@ -20,7 +20,7 @@ def draw_pixel(pix_pos:Vec2, color: int):
     print(f"draw pixel({pix_pos.x},{pix_pos.y}):{color}")
 
 
-class Resizeable(ABC):
+class Resizable(ABC):
     @abstractmethod
     def resize(self, new_size: Vec2):
         pass
@@ -49,7 +49,7 @@ class Element(ABC):
 
 
 
-class Rectangle(Element, Resizeable):
+class Rectangle(Element, Resizable):
     pos: Vec2
     size: Vec2
     color: int

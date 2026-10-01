@@ -5,24 +5,24 @@ files:
     visible: true
     placeholders:
       - offset: 494
-        length: 93
+        length: 92
         placeholder_text: |-
-          class Resizeable(ABC):
+          class Resizable(ABC):
               # TODO
               pass
-      - offset: 590
+      - offset: 589
         length: 92
         placeholder_text: |-
           class Scalable(ABC):
               # TODO
               pass
-      - offset: 685
+      - offset: 684
         length: 120
         placeholder_text: |-
           class Choppable(ABC):
               # TODO
               pass
-      - offset: 902
+      - offset: 901
         length: 51
         placeholder_text: |2+
               def move(self, new_pos: Vec2):
@@ -38,12 +38,12 @@ files:
 
 
 
-      - offset: 953
-        length: 37
+      - offset: 952
+        length: 36
         placeholder_text: |-
           # TODO
           class Rectangle(Element):
-      - offset: 1359
+      - offset: 1357
         length: 33
         placeholder_text: |2+
                   self.size = new_size
@@ -56,12 +56,12 @@ files:
 
 
 
-      - offset: 1392
+      - offset: 1390
         length: 42
         placeholder_text: |-
           # TODO
           class Image(Element):
-      - offset: 1560
+      - offset: 1558
         length: 117
         placeholder_text: |2-
               def move(self, new_pos: Vec2):

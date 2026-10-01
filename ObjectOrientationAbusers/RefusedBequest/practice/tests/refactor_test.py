@@ -25,8 +25,8 @@ class RefusedBequestRefactorTest(unittest.TestCase):
         tree = ast.parse(self.source_text)
         classes = collect_class_def_from_module(tree)
         self.assertIn(
-            "Resizeable", classes,
-            'Expected extracted ABC "Resizeable" to exist',
+            "Resizable", classes,
+            'Expected extracted ABC "Resizable" to exist',
         )
 
     def test_scalable_abc_exists(self):
@@ -70,7 +70,7 @@ class RefusedBequestRefactorTest(unittest.TestCase):
         self.assertIsNotNone(rect, 'Expected "Rectangle" class')
         base_names = {b.id for b in rect.bases if isinstance(b, ast.Name)}
         self.assertIn("Element", base_names, msg='"Rectangle" should inherit from Element')
-        self.assertIn("Resizeable", base_names, msg='"Rectangle" should inherit from Resizeable')
+        self.assertIn("Resizable", base_names, msg='"Rectangle" should inherit from Resizable')
 
     def test_rectangle_does_not_inherit_unused_abcs(self):
         tree = ast.parse(self.source_text)
@@ -110,8 +110,8 @@ class RefusedBequestRefactorTest(unittest.TestCase):
         self.assertIsNotNone(img, 'Expected "Image" class')
         base_names = {b.id for b in img.bases if isinstance(b, ast.Name)}
         self.assertNotIn(
-            "Resizeable", base_names,
-            '"Image" should NOT inherit Resizeable (Refused Bequest)',
+            "Resizable", base_names,
+            '"Image" should NOT inherit Resizable (Refused Bequest)',
         )
 
     def test_image_has_scale_and_chop_methods(self):
