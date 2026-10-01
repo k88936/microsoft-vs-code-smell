@@ -35,10 +35,10 @@ class RegressionTest(unittest.TestCase):
                 Amount owed is $1730.00
                 You earned 47 credits
         """
-        assert "BigCo" in result
-        assert "650" in result
-        assert "55" in result
-        assert "580" in result
-        assert "35" in result
-        assert "1730" in result
-        assert "47" in result
+        self.assertIn("BigCo", result)
+        self.assertIn("650", result)
+        self.assertIn("55", result)
+        self.assertIn("580", result)
+        self.assertIn("35", result)
+        self.assertIn("1730", result)
+        self.assertIn("47", result)

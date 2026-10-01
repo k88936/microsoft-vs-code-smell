@@ -24,20 +24,24 @@ class FindMoreAppropriateClassesForMethodsTest(unittest.TestCase):
         car_tree = ast.parse(self.car_source_text)
         driver_tree = ast.parse(self.driver_source_text)
 
-        assert collect_method_from_class_in_module(car_tree, "Car", "start") is not None, (
-            'Please, move the "start" method to Car class'
+        self.assertIsNotNone(
+            collect_method_from_class_in_module(car_tree, "Car", "start"),
+            'Please, move the "start" method to Car class',
         )
-        assert collect_method_from_class_in_module(driver_tree, "Driver", "_start") is None, (
-            'Please, remove the "_start" method from Driver class'
+        self.assertIsNone(
+            collect_method_from_class_in_module(driver_tree, "Driver", "_start"),
+            'Please, remove the "_start" method from Driver class',
         )
 
     def test_stop_method_moved_to_car_class(self):
         car_tree = ast.parse(self.car_source_text)
         driver_tree = ast.parse(self.driver_source_text)
 
-        assert collect_method_from_class_in_module(car_tree, "Car", "stop") is not None, (
-            'Please, move the "stop" method to Car class'
+        self.assertIsNotNone(
+            collect_method_from_class_in_module(car_tree, "Car", "stop"),
+            'Please, move the "stop" method to Car class',
         )
-        assert collect_method_from_class_in_module(driver_tree, "Driver", "_stop") is None, (
-            'Please, remove the "_stop" method from Driver class'
+        self.assertIsNone(
+            collect_method_from_class_in_module(driver_tree, "Driver", "_stop"),
+            'Please, remove the "_stop" method from Driver class',
         )

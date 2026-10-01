@@ -24,15 +24,15 @@ class TestCase(unittest.TestCase):
 
         output = print_all()
         print(output)
-        assert '王小明' in output
-        assert 'dorm' in output
-        assert 'swim' in output
+        self.assertIn('王小明', output)
+        self.assertIn('dorm', output)
+        self.assertIn('swim', output)
 
     def test_zh(self):
         set_language(I18nLanguage.ZH)
 
         output = print_all()
         print(output)
-        assert '王小明' in output
-        assert '宿舍' in output
-        assert '游泳' in output
+        self.assertIn('王小明', output)
+        self.assertIn('宿舍', output)
+        self.assertIn('游泳', output)

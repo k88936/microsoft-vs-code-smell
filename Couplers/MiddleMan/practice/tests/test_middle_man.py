@@ -25,7 +25,7 @@ class MiddleManCodeSmellTest(unittest.TestCase):
         tree = ast.parse(self.source_text)
         classes = collect_class_def_from_module(tree)
 
-        assert "MiddleMan" not in classes, 'Please, remove "MiddleMan" class'
+        self.assertNotIn("MiddleMan", classes, 'Please, remove "MiddleMan" class')
 
     def test_client_uses_data_provider_directly(self):
         tree = ast.parse(self.source_text)
@@ -35,9 +35,12 @@ class MiddleManCodeSmellTest(unittest.TestCase):
             method_name="process_data",
         )
 
-        assert process_data is not None, "Expected Client.process_data to be present."
-        assert has_return_attr_call_in_func_def(
-            process_data,
-            attr_name="fetch_data",
-            receiver_name="data_provider",
-        ), 'Please, invoke "data_provider.fetch_data()" inside "Client.process_data" method.'
+        self.assertIsNotNone(process_data, "Expected Client.process_data to be present.")
+        self.assertTrue(
+            has_return_attr_call_in_func_def(
+                process_data,
+                attr_name="fetch_data",
+                receiver_name="data_provider",
+            ),
+            'Please, invoke "data_provider.fetch_data()" inside "Client.process_data" method.',
+        )

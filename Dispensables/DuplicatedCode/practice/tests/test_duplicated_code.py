@@ -45,8 +45,9 @@ class ExtractTest(unittest.TestCase):
         functions = collect_func_def_from_module(tree)
         target_functions = {"word_count", "copy_file"}
 
-        assert target_functions.issubset(functions), (
-            "Expected both word_count and copy_file to be present."
+        self.assertTrue(
+            target_functions.issubset(functions),
+            "Expected both word_count and copy_file to be present.",
         )
 
         helper_candidates = [
@@ -54,16 +55,21 @@ class ExtractTest(unittest.TestCase):
             for name, fn in functions.items()
             if name not in target_functions and has_inline_file_check(fn)
         ]
-        assert len(helper_candidates) == 1, (
-            "Please extract duplicated file validation into exactly one shared helper."
+        self.assertEqual(
+            len(helper_candidates),
+            1,
+            "Please extract duplicated file validation into exactly one shared helper.",
         )
 
         helper_name = helper_candidates[0].name
         for target_name in sorted(target_functions):
             target_fn = functions[target_name]
-            assert helper_name in collect_func_calls_from_func_def(target_fn), (
-                f"{target_name} must call {helper_name} after extraction."
+            self.assertIn(
+                helper_name,
+                collect_func_calls_from_func_def(target_fn),
+                f"{target_name} must call {helper_name} after extraction.",
             )
-            assert not has_inline_file_check(target_fn), (
-                f"Do not keep duplicated inline file validation in {target_name}."
+            self.assertFalse(
+                has_inline_file_check(target_fn),
+                f"Do not keep duplicated inline file validation in {target_name}.",
             )
