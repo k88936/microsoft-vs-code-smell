@@ -6,7 +6,7 @@ vendor:
   name: k88936
   email: kvtodev@outlook.com
 programming_language: Python
-environment: unittest
+environment: pytest
 content:
   - RefactoringAndItsPurpose
   - Bloaters
